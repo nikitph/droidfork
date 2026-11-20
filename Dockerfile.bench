@@ -1,0 +1,6 @@
+FROM python:3.12-slim
+WORKDIR /lab
+RUN pip install --no-cache-dir grpcio==1.85.3 protobuf==7.36.2 Pillow==13.0.0
+COPY droidfork droidfork
+COPY scripts scripts
+ENTRYPOINT ["python","-u","-m","scripts.benchmark"]

@@ -1,0 +1,190 @@
+{
+  "device/google/cuttlefish": {
+    "commit": "56fc68d615f014186d0ea349c9e398ac4a257dd5",
+    "project": "device/google/cuttlefish"
+  },
+  "external/abseil-cpp": {
+    "commit": "000dabbd0c985dae5c40eb3a9531d4c8ee3f9d18",
+    "project": "platform/external/abseil-cpp"
+  },
+  "external/angle": {
+    "commit": "901e32aa9923b05c3a2af846f8a28fc79c93d0be",
+    "project": "platform/external/angle"
+  },
+  "external/astc-codec": {
+    "commit": "17ae36822a8084f45ae51f9031e81f8318254f33",
+    "project": "platform/external/astc-codec"
+  },
+  "external/bison": {
+    "commit": "ab70b64baf6d65c35498bfce689c0b8991f832db",
+    "project": "platform/external/bison"
+  },
+  "external/boringssl": {
+    "commit": "2fdcf7f039e46cd6396fe2b8103087edcbc718f2",
+    "project": "platform/external/boringssl"
+  },
+  "external/cares": {
+    "commit": "42cf8dee534419f1826f474d2f5fd67ac94a1706",
+    "project": "platform/external/c-ares"
+  },
+  "external/crashpad": {
+    "commit": "7f5ed4a89505f5b2065023da4308ec8ea130fb7b",
+    "project": "platform/external/crashpad"
+  },
+  "external/curl": {
+    "commit": "1da4b04273638c8afe6f88bd7a7ccfb693640773",
+    "project": "platform/external/curl"
+  },
+  "external/dtc": {
+    "commit": "7ef672efc38f789fd235a1da590b20386d1fdf2f",
+    "project": "platform/external/dtc"
+  },
+  "external/flatbuffers": {
+    "commit": "3a033a36665d6e573d1afc59bcc8c31bed1153d9",
+    "project": "platform/external/flatbuffers"
+  },
+  "external/flex": {
+    "commit": "104fbfc36067cd630eff3430ee9736febbe26956",
+    "project": "platform/external/flex"
+  },
+  "external/fmtlib": {
+    "commit": "3db546a8fc29993fce7ac8c77e1802ba5374987f",
+    "project": "platform/external/fmtlib"
+  },
+  "external/gfxstream-protocols": {
+    "commit": "9bc1eed18fdb082e78966ecb9324a08f7cd8d76f",
+    "project": "platform/external/gfxstream-protocols"
+  },
+  "external/glib": {
+    "commit": "9f3ee561eee2bc195845201a4931d4709ff597e5",
+    "project": "platform/external/bluetooth/glib"
+  },
+  "external/google-benchmark": {
+    "commit": "1bff076dad8a0cbb740e7f68586d59c3bb3e1bfd",
+    "project": "platform/external/google-benchmark"
+  },
+  "external/google-breakpad": {
+    "commit": "1e7beda222b3a57ec4d0b1479667dd22b7448ee3",
+    "project": "platform/external/google-breakpad"
+  },
+  "external/googletest": {
+    "commit": "da2126ca47ab36e118e1b7bd7a31b19ed9c7d4b8",
+    "project": "platform/external/googletest"
+  },
+  "external/grpc": {
+    "commit": "fea7de5acfa2da17203f8eea78f974b41bcb6807",
+    "project": "platform/external/grpc-grpc"
+  },
+  "external/libpng": {
+    "commit": "c5efaf5f354ba235eaa2e567379d1b903523d592",
+    "project": "platform/external/libpng"
+  },
+  "external/libslirp": {
+    "commit": "6559d5fa78a9afc4e21cffdad4b91e45265d359b",
+    "project": "trusty/external/qemu-libslirp"
+  },
+  "external/libusb": {
+    "commit": "23f123a3f531572d14a253db3451c950e21d2447",
+    "project": "platform/external/libusb"
+  },
+  "external/libxml2": {
+    "commit": "27570c2a5b96dc5aea1a0085f610f37ab744f643",
+    "project": "platform/external/libxml2"
+  },
+  "external/lz4": {
+    "commit": "b921724c5f6eb453af173afaec75012fa25c2059",
+    "project": "platform/external/lz4"
+  },
+  "external/m4": {
+    "commit": "4c63838f0ccd1a8850a3d17f31c3427668a78a23",
+    "project": "toolchain/m4"
+  },
+  "external/mesa3d": {
+    "commit": "9b0d090709566ee57707fb3bbbb6147ccba44d79",
+    "project": "platform/external/mesa3d"
+  },
+  "external/mobly-bundled-snippets": {
+    "commit": "45a50f7ae34fa384567a3f284b44d6cc95762c75",
+    "project": "platform/external/mobly-bundled-snippets"
+  },
+  "external/moltenvk": {
+    "commit": "4d44e42aacc0734d4c55e26602e5aded66f73f6c",
+    "project": "platform/external/moltenvk"
+  },
+  "external/nasm": {
+    "commit": "e10993a8fdfbe60a441747323d80c8d066ae1155",
+    "project": "platform/external/nasm"
+  },
+  "external/perfetto": {
+    "commit": "37518c39e3db120322359090db3d54f6ac100078",
+    "project": "platform/external/perfetto"
+  },
+  "external/protobuf": {
+    "commit": "623d88a75a0b17ad2cc4be8fa79c3b97e7384a40",
+    "project": "platform/external/protobuf"
+  },
+  "external/qemu": {
+    "commit": "bbaa8072362a251645b339b97a737a725c776126",
+    "project": "platform/external/qemu"
+  },
+  "external/rapidjson": {
+    "commit": "4d42830893d6728eba192789c0629d76a359fca0",
+    "project": "platform/external/rapidjson"
+  },
+  "external/regex-re2": {
+    "commit": "3b76205b4a5ab7fd9a11df8ac930d21cf52ad189",
+    "project": "platform/external/regex-re2"
+  },
+  "external/tink": {
+    "commit": "f416fdeb6d1ebafda566d4ecff80eace51a750f2",
+    "project": "platform/external/tink"
+  },
+  "external/tinyobjloader": {
+    "commit": "d16a940067fbc191364fc1d3e2a2d907209c9320",
+    "project": "platform/external/tinyobjloader"
+  },
+  "external/virglrenderer": {
+    "commit": "5d6e453751926c5209c7bad5ef7a6285feef5bb6",
+    "project": "platform/external/virglrenderer"
+  },
+  "external/webrtc": {
+    "commit": "34c5ae008bf811fce3006818f26f922b3647237a",
+    "project": "platform/external/webrtc"
+  },
+  "external/wpa_supplicant_8": {
+    "commit": "db64ab725acee6991a7ee9746d960731cca0b563",
+    "project": "platform/external/wpa_supplicant_8"
+  },
+  "external/zlib": {
+    "commit": "5a4f1701693dff36e495d13dd14b70e15abe0d01",
+    "project": "platform/external/zlib"
+  },
+  "hardware/google/aemu": {
+    "commit": "c305d2443de785f9ffd10f37814f4bb831d27816",
+    "project": "platform/hardware/google/aemu"
+  },
+  "hardware/google/gfxstream": {
+    "commit": "4695bfc87cfa9b0a4a54889583fe642145714613",
+    "project": "platform/hardware/google/gfxstream"
+  },
+  "prebuilts/android-emulator-build/common": {
+    "commit": "308ef4ba2accaeb7013871fcf533b1fa0515d776",
+    "project": "platform/prebuilts/android-emulator-build/common"
+  },
+  "prebuilts/android-emulator-build/qemu-android-deps": {
+    "commit": "b06aee625002d0738c5576bbf437b9378229bef0",
+    "project": "platform/prebuilts/android-emulator-build/qemu-android-deps"
+  },
+  "prebuilts/android-emulator-build/qt": {
+    "commit": "f2d41b8d15c2a628e95c2e755ed92186d03b763c",
+    "project": "platform/prebuilts/android-emulator-build/qt"
+  },
+  "tools/netsim": {
+    "commit": "94f482eb88d1f60e1c3d0356ac781c47cdbb97bc",
+    "project": "platform/tools/netsim"
+  },
+  "tools/rootcanal": {
+    "commit": "bba9b040de190d195ec34e52f8e722e43696b7dd",
+    "project": "platform/tools/rootcanal"
+  }
+}

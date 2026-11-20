@@ -1,0 +1,12 @@
+{
+  "child_rewards": [
+    1.0,
+    0.0
+  ],
+  "instruction": "Create a new contact for Ravi Das. Their number is 2025550137.",
+  "parent_after": 0.0,
+  "parent_before": 0.0,
+  "task": "ContactsAddContact",
+  "transport": "AndroidEnv AdbCallParser against each local device",
+  "upstream_commit": "55ddaf5edc6f6c25673aed343907d5b9dca66f84"
+}

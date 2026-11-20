@@ -1,0 +1,193 @@
+[
+  {
+    "mode": "mapped",
+    "node": "374c91f8d66940b2be3f4d21502baad0",
+    "pid": 33282,
+    "log": ".lab/pool/logs/82f6c2c06409404084bc1e0242571647.log",
+    "spawn_s": 0.01307637500576675,
+    "connected_s": 3.4209158329758793,
+    "marker_s": 3.458618083037436,
+    "xml_s": 8.802139082923532,
+    "png_s": 10.559488042024896,
+    "pixels_sha256": "c2c548aa98fb93f76115e7d2cd04dc5721bc9cca36590f8b4cef9b3be015c9c9",
+    "verified_s": 10.576419583056122,
+    "native_log": [
+      "3.052245 DroidFork HVF: mapped 163840 main RAM pages privately",
+      "3.053385 DroidFork RAM: 1 pages in 1 reads, 9.3 ms",
+      "3.156790 INFO         | Successfully loaded snapshot 'df_374c91f8d66940b2' using 138 ms"
+    ],
+    "child_save_verified": true
+  },
+  {
+    "mode": "batch",
+    "node": "374c91f8d66940b2be3f4d21502baad0",
+    "pid": 33351,
+    "log": ".lab/pool/logs/630853c9392c41fabc734e0769179307.log",
+    "spawn_s": 0.022108874982222915,
+    "connected_s": 3.5918097500689328,
+    "marker_s": 3.5961861670948565,
+    "xml_s": 6.436468333005905,
+    "png_s": 6.504375624936074,
+    "pixels_sha256": "404e7506eeaed10fce9b9280e82cada36896613f307af1ffadf7362bc8328fd0",
+    "verified_s": 6.5228712919633836,
+    "native_log": [
+      "3.389988 DroidFork RAM: 158253 pages in 2269 reads, 1396.6 ms",
+      "3.528786 INFO         | Successfully loaded snapshot 'df_374c91f8d66940b2' using 1562 ms"
+    ],
+    "child_save_verified": true
+  },
+  {
+    "mode": "stock",
+    "node": "374c91f8d66940b2be3f4d21502baad0",
+    "pid": 33382,
+    "log": ".lab/pool/logs/e6a967799e244b688ef8ecea879f8c72.log",
+    "spawn_s": 0.016013833926990628,
+    "connected_s": 3.1962942499667406,
+    "marker_s": 3.1968780839815736,
+    "xml_s": 5.140171333914623,
+    "png_s": 5.410253833979368,
+    "error": "AssertionError('returned frame has stale focus for Phone: [(250, 248, 255), (250, 248, 255), (249, 247, 254), (73, 93, 146), (73, 93, 146), (74, 94, 147)]')"
+  },
+  {
+    "mode": "ordinary",
+    "node": "374c91f8d66940b2be3f4d21502baad0",
+    "pid": 33424,
+    "log": ".lab/pool/logs/6fbb3b9e379742c38c254cc8bdff337c.log",
+    "spawn_s": 0.013125125085934997,
+    "connected_s": 2.8808811670169234,
+    "marker_s": 2.883644958026707,
+    "xml_s": 4.462998874951154,
+    "png_s": 5.524169458076358,
+    "pixels_sha256": "5c6fd9366f9779c37a5862572319e2b5cb7969eb1a9c272b9dc15f211ed6b3fd",
+    "verified_s": 5.530287917004898,
+    "native_log": [
+      "2.843755 INFO         | Successfully loaded snapshot 'df_374c91f8d66940b2' using 839 ms"
+    ],
+    "child_save_verified": true
+  },
+  {
+    "mode": "batch",
+    "node": "374c91f8d66940b2be3f4d21502baad0",
+    "pid": 33439,
+    "log": ".lab/pool/logs/ee14adf573904887b9e0cd98760e49ee.log",
+    "spawn_s": 0.012642292072996497,
+    "connected_s": 2.755885499995202,
+    "marker_s": 2.7585075839888304,
+    "xml_s": 4.900220124982297,
+    "png_s": 5.200421416899189,
+    "error": "AssertionError('returned frame has stale focus for Phone: [(250, 248, 255), (250, 248, 255), (249, 247, 254), (73, 93, 146), (73, 93, 146), (74, 94, 147)]')"
+  },
+  {
+    "mode": "stock",
+    "node": "374c91f8d66940b2be3f4d21502baad0",
+    "pid": 33473,
+    "log": ".lab/pool/logs/770d8126147441b59e632cb43b6f74df.log",
+    "spawn_s": 0.012425958178937435,
+    "connected_s": 3.0461707080248743,
+    "marker_s": 3.0499505831394345,
+    "xml_s": 4.453448417130858,
+    "png_s": 5.237541667185724,
+    "error": "AssertionError('returned frame has stale focus for Phone: [(250, 248, 255), (250, 248, 255), (249, 247, 254), (73, 93, 146), (73, 93, 146), (74, 94, 147)]')"
+  },
+  {
+    "mode": "ordinary",
+    "node": "374c91f8d66940b2be3f4d21502baad0",
+    "pid": 33511,
+    "log": ".lab/pool/logs/d3fd7659552449068c97b8890a262cde.log",
+    "spawn_s": 0.0117595000192523,
+    "connected_s": 2.8906397910322994,
+    "marker_s": 2.8909007909242064,
+    "xml_s": 4.704975957982242,
+    "png_s": 5.199093540897593,
+    "error": "AssertionError('returned frame has stale focus for Phone: [(250, 248, 255), (250, 248, 255), (249, 247, 254), (73, 93, 146), (73, 93, 146), (74, 94, 147)]')"
+  },
+  {
+    "mode": "mapped",
+    "node": "374c91f8d66940b2be3f4d21502baad0",
+    "pid": 33553,
+    "log": ".lab/pool/logs/2e0e25f1b8c64277957b9e332fee025e.log",
+    "spawn_s": 0.013407374965026975,
+    "connected_s": 2.262384000001475,
+    "marker_s": 2.280810874886811,
+    "xml_s": 8.234497250057757,
+    "png_s": 8.746407124912366,
+    "pixels_sha256": "bcbbd3a78cde80e6f7f4e2049375fd81c41d9d19a771220f9981952e1c6d9879",
+    "verified_s": 8.756086040986702,
+    "native_log": [
+      "1.974592 DroidFork HVF: mapped 163840 main RAM pages privately",
+      "1.975377 DroidFork RAM: 1 pages in 1 reads, 8.8 ms",
+      "2.078163 INFO         | Successfully loaded snapshot 'df_374c91f8d66940b2' using 136 ms"
+    ]
+  },
+  {
+    "mode": "stock",
+    "node": "374c91f8d66940b2be3f4d21502baad0",
+    "pid": 33567,
+    "log": ".lab/pool/logs/de617cef858c443d8603b0fc3b8f3a36.log",
+    "spawn_s": 0.01177291595377028,
+    "connected_s": 3.310151624958962,
+    "marker_s": 3.3135893328581005,
+    "xml_s": 5.763111165957525,
+    "png_s": 6.207547958008945,
+    "pixels_sha256": "409a4f5cb652c85e8a02eb596d89340e47c27e49c66f1dcb3099c8966c5b5957",
+    "verified_s": 6.216253207996488,
+    "native_log": [
+      "3.263303 INFO         | Successfully loaded snapshot 'df_374c91f8d66940b2' using 1271 ms"
+    ]
+  },
+  {
+    "mode": "ordinary",
+    "node": "374c91f8d66940b2be3f4d21502baad0",
+    "pid": 33610,
+    "log": ".lab/pool/logs/bc538f0ed49742b2b9a5740473cb2930.log",
+    "spawn_s": 0.012325540883466601,
+    "connected_s": 3.63069949997589,
+    "marker_s": 3.6354808330070227,
+    "xml_s": 5.251251416048035,
+    "png_s": 6.504220125032589,
+    "pixels_sha256": "404e7506eeaed10fce9b9280e82cada36896613f307af1ffadf7362bc8328fd0",
+    "verified_s": 6.50947150005959,
+    "native_log": [
+      "3.584519 INFO         | Successfully loaded snapshot 'df_374c91f8d66940b2' using 1157 ms"
+    ]
+  },
+  {
+    "mode": "mapped",
+    "node": "374c91f8d66940b2be3f4d21502baad0",
+    "pid": 33645,
+    "log": ".lab/pool/logs/d68570d6f6bd4536a3fc8e17844dfc8d.log",
+    "spawn_s": 0.011356125120073557,
+    "connected_s": 2.2121731671504676,
+    "marker_s": 2.2384261251427233,
+    "xml_s": 7.8314161251764745,
+    "png_s": 9.087984709069133,
+    "pixels_sha256": "c2c548aa98fb93f76115e7d2cd04dc5721bc9cca36590f8b4cef9b3be015c9c9",
+    "verified_s": 9.09481279202737,
+    "native_log": [
+      "1.969857 DroidFork HVF: mapped 163840 main RAM pages privately",
+      "1.970664 DroidFork RAM: 1 pages in 1 reads, 8.5 ms",
+      "2.071833 INFO         | Successfully loaded snapshot 'df_374c91f8d66940b2' using 135 ms"
+    ]
+  },
+  {
+    "mode": "batch",
+    "node": "374c91f8d66940b2be3f4d21502baad0",
+    "pid": 33704,
+    "log": ".lab/pool/logs/9309df23c451458bb8b8673889c9824b.log",
+    "spawn_s": 0.011624458013102412,
+    "connected_s": 3.1851979170460254,
+    "marker_s": 3.1893212920986116,
+    "xml_s": 4.817971208132803,
+    "png_s": 5.379945042077452,
+    "pixels_sha256": "404e7506eeaed10fce9b9280e82cada36896613f307af1ffadf7362bc8328fd0",
+    "verified_s": 5.38616954209283,
+    "native_log": [
+      "3.018165 DroidFork RAM: 158253 pages in 2269 reads, 1045.2 ms",
+      "3.138025 INFO         | Successfully loaded snapshot 'df_374c91f8d66940b2' using 1192 ms"
+    ]
+  },
+  {
+    "sealed_parent_empty": true,
+    "original_focus": "Northline Studio"
+  }
+]

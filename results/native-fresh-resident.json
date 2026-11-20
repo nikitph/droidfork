@@ -1,0 +1,59 @@
+[
+  {
+    "mode": "direct-map",
+    "node": "9bcd33e1f80243ad8ffe793f11a52b3d",
+    "pid": 34880,
+    "log": ".lab/pool/logs/df4c9a4bc1d4413282d8ca31957e9f20.log",
+    "spawn_s": 0.01171070896089077,
+    "connected_s": 1.5485052918083966,
+    "marker_s": 1.549415374873206,
+    "xml_s": 2.6769530000165105,
+    "png_s": 3.514374541817233,
+    "pixels_sha256": "14913a64bb301abea494bb00719c3d903a133c412eef26b1f8e2e80abe743a06",
+    "verified_s": 3.5323366669472307,
+    "native_log": [
+      "1.385524 DroidFork HVF: mapped 163840 main RAM pages privately",
+      "1.387710 DroidFork RAM: 1 pages in 1 reads, 453.7 ms",
+      "1.531255 INFO         | Successfully loaded snapshot 'df_9bcd33e1f80243ad' using 622 ms"
+    ],
+    "resident_source": true
+  },
+  {
+    "mode": "direct-map",
+    "node": "9bcd33e1f80243ad8ffe793f11a52b3d",
+    "pid": 34902,
+    "log": ".lab/pool/logs/b625d80d6a014332be4e5d23be56fba8.log",
+    "spawn_s": 0.010940833017230034,
+    "connected_s": 1.4765220410190523,
+    "marker_s": 1.4787973330821842,
+    "xml_s": 3.1561135831288993,
+    "png_s": 3.336697082966566,
+    "pixels_sha256": "d1167d5190a7964d4dc56a0ddda101beeb71de441445911947f2dd824fdd7859",
+    "verified_s": 3.3423297081608325,
+    "native_log": [
+      "1.327972 DroidFork HVF: mapped 163840 main RAM pages privately",
+      "1.329843 DroidFork RAM: 1 pages in 1 reads, 400.6 ms",
+      "1.456914 INFO         | Successfully loaded snapshot 'df_9bcd33e1f80243ad' using 552 ms"
+    ],
+    "resident_source": true
+  },
+  {
+    "mode": "direct-map",
+    "node": "9bcd33e1f80243ad8ffe793f11a52b3d",
+    "pid": 34940,
+    "log": ".lab/pool/logs/841051a823b5477a9fb37a388433f567.log",
+    "spawn_s": 0.010953833116218448,
+    "connected_s": 1.3989020420704037,
+    "marker_s": 1.3998034580145031,
+    "xml_s": 2.8725917499978095,
+    "png_s": 3.0957208331674337,
+    "pixels_sha256": "14913a64bb301abea494bb00719c3d903a133c412eef26b1f8e2e80abe743a06",
+    "verified_s": 3.101011082995683,
+    "native_log": [
+      "1.257971 DroidFork HVF: mapped 163840 main RAM pages privately",
+      "1.259476 DroidFork RAM: 1 pages in 1 reads, 346.5 ms",
+      "1.382038 INFO         | Successfully loaded snapshot 'df_9bcd33e1f80243ad' using 494 ms"
+    ],
+    "resident_source": true
+  }
+]

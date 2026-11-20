@@ -1,0 +1,143 @@
+diff --git a/cpus.c b/cpus.c
+index aef6440a3..7a2f7379d 100644
+--- a/cpus.c
++++ b/cpus.c
+@@ -1575,8 +1575,15 @@ static void *qemu_tcg_rr_cpu_thread_fn(void *arg)
+
+ /* The HVF-specific vCPU thread function. This one should only run when the host
+  * CPU supports the VMX "unrestricted guest" feature. */
++#ifdef __APPLE__
++#include <pthread/qos.h>
++#endif
+ static void *qemu_hvf_cpu_thread_fn(void *arg)
+ {
++#ifdef __APPLE__
++    if (getenv("DROIDFORK_INTERACTIVE"))
++        pthread_set_qos_class_self_np(QOS_CLASS_USER_INTERACTIVE, 0);
++#endif
+     CPUState *cpu = arg;
+
+     int r;
+diff --git a/target/arm/hvf.c b/target/arm/hvf.c
+index bb47acbac..090c6c989 100644
+--- a/target/arm/hvf.c
++++ b/target/arm/hvf.c
+@@ -15,6 +15,11 @@
+
+ #include <Hypervisor/Hypervisor.h>
+ #include <sys/mman.h>
++#include <sys/stat.h>
++#include <mach/mach.h>
++#include <mach/mach_vm.h>
++#include <fcntl.h>
++#include <unistd.h>
+ #include <mach/mach_time.h>
+
+ #include "esr.h"
+@@ -323,6 +328,82 @@ hvf_slot* hvf_next_free_slot() {
+     return mem;
+ }
+
++// Diagnostic for a one-shot fresh restore. Export page dispositions only after
++// the host signals that verification is complete; no page contents are exported.
++struct df_ram_trace { void *host; size_t bytes; const char *prefix; };
++
++static void *df_record_ram(void *arg) {
++    struct df_ram_trace *tr = arg;
++    char trigger[PATH_MAX], output[PATH_MAX], tmp[PATH_MAX];
++    snprintf(trigger,sizeof(trigger),"%s.trigger",tr->prefix);
++    snprintf(output,sizeof(output),"%s.pages",tr->prefix);
++    snprintf(tmp,sizeof(tmp),"%s.tmp",tr->prefix);
++    for (int n = 0; n < 1500 && access(trigger,F_OK); ++n) usleep(20000);
++    if (!access(trigger,F_OK)) {
++        size_t pages=tr->bytes/16384;
++        int *disp=calloc(pages,sizeof(*disp));
++        mach_vm_size_t count=pages;
++        if (disp && KERN_SUCCESS==mach_vm_page_range_query(mach_task_self(),
++               (mach_vm_address_t)tr->host,tr->bytes,(mach_vm_address_t)disp,&count)
++            && count==pages) {
++            FILE *f=fopen(tmp,"wb");
++            if (f) {
++                for (size_t n=0;n<pages;n++) {
++                    const int d=disp[n];
++                    bool private_page=(d & VM_PAGE_QUERY_PAGE_PRESENT) && !(d & VM_PAGE_QUERY_PAGE_EXTERNAL);
++                    fputc(private_page ? 2 : (d & VM_PAGE_QUERY_PAGE_REF ? 1 : 0), f);
++                }
++                if (!fclose(f)) rename(tmp,output);
++            }
++        }
++        free(disp);
++    }
++    free(tr); return NULL;
++}
++
++static void df_prefault_ram(void *host,size_t bytes) {
++    const char *path=getenv("DROIDFORK_HINTS");
++    if (!path) return;
++    FILE *f=fopen(path,"rb");
++    if (!f) return;
++    size_t pages=bytes/16384, writes=0, reads=0;
++    unsigned char *hints=malloc(pages);
++    if (hints && fread(hints,1,pages,f)==pages && fgetc(f)==EOF) {
++        unsigned char check=0;
++        for (size_t n=0;n<pages;n++) {
++            volatile unsigned char *p=(volatile unsigned char *)host+16384*n;
++            if (hints[n]==2) { *p=*p; writes++; }
++            else if (hints[n]==1 && getenv("DROIDFORK_HINT_READS")) { check^=*p; reads++; }
++        }
++        fprintf(stderr,"DroidFork hints: %zu private pages, %zu reads (%u)\n",writes,reads,check);
++    }
++    free(hints); fclose(f);
++}
++
++// The source is a read-only POSIX shared-memory object containing only sealed
++// checkpoint bytes. Remap a private Mach view into this new emulator's RAM.
++static void *df_map_anon_checkpoint(void *host,size_t bytes,int raw,const char *name) {
++    int fd=shm_open(name,O_RDONLY,0);
++    unsigned char expected[40];
++    if(fd<0) return MAP_FAILED;
++    // Darwin POSIX shared-memory descriptors support mmap, not pread.
++    void *base=mmap(NULL,bytes+16384,PROT_READ,MAP_SHARED,fd,0);
++    close(fd);
++    if(base==MAP_FAILED) { perror("DroidFork shared mmap"); return MAP_FAILED; }
++    if(pread(raw,expected,40,0)!=40 || memcmp(base,expected,40)!=0) {
++        munmap(base,bytes+16384); return MAP_FAILED;
++    }
++    void *src=(uint8_t*)base+16384;
++    mach_vm_address_t addr=(mach_vm_address_t)host;vm_prot_t cur,max;
++    kern_return_t ret=mach_vm_remap(mach_task_self(),&addr,bytes,0,VM_FLAGS_FIXED|VM_FLAGS_OVERWRITE,
++        mach_task_self(),(mach_vm_address_t)src,TRUE,&cur,&max,VM_INHERIT_NONE);
++    munmap(base,bytes+16384);
++    if(ret!=KERN_SUCCESS) { fprintf(stderr,"DroidFork Mach remap error %d\n",ret); return MAP_FAILED; }
++    ret=mach_vm_protect(mach_task_self(),addr,bytes,FALSE,VM_PROT_COPY|VM_PROT_READ|VM_PROT_WRITE);
++    if(ret==KERN_SUCCESS) fprintf(stderr,"DroidFork Mach: private checkpoint view ready\n");
++    return ret==KERN_SUCCESS ? (void*)addr : MAP_FAILED;
++}
++
+ // Rebind the main RAM region while the snapshot loader has all vCPUs stopped.
+ // QEMU devices keep their HVA pointers. HVF gets the new private VM object
+ // explicitly, including any RAM slots split by the machine memory layout.
+@@ -343,11 +424,22 @@ bool droidfork_hvf_map_private(void *host, size_t bytes, int fd) {
+     }
+     for (int i = 0; i < HVF_MAX_SLOTS; ++i)
+         if (remap[i]) assert_hvf_ok(hv_vm_unmap(mac_slots[i].gpa_start, mac_slots[i].size));
+-    void *result = mmap(host, bytes, PROT_READ | PROT_WRITE,
++    const char *name = getenv("DROIDFORK_SHM");
++    void *result = name ? df_map_anon_checkpoint(host,bytes,fd,name) : mmap(host, bytes, PROT_READ | PROT_WRITE,
+                         MAP_PRIVATE | MAP_FIXED, fd, 16384);
++    if (result == host) df_prefault_ram(host,bytes);
+     for (int i = 0; i < HVF_MAX_SLOTS; ++i)
+         if (remap[i]) assert_hvf_ok(hv_vm_map(mac_slots[i].hva, mac_slots[i].gpa_start,
+                 mac_slots[i].size, mac_slots[i].flags));
+     pthread_rwlock_unlock(&mem_lock);
++    const char *record = getenv("DROIDFORK_RECORD_PAGES");
++    if (result == host && record) {
++        struct df_ram_trace *tr=malloc(sizeof(*tr)); pthread_t tid;
++        if (tr) {
++            *tr=(struct df_ram_trace){host,bytes,record};
++            if (!pthread_create(&tid,NULL,df_record_ram,tr)) pthread_detach(tid);
++            else free(tr);
++        }
++    }
+     return result == host;
+ }

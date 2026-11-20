@@ -1,0 +1,3078 @@
+{
+  "client": "macOS-27.0-arm64-arm-64bit",
+  "base": "594bce1fe2d74f1384b995f6c618fe30",
+  "image": "google/sdk_gphone64_arm64/emu64a:15/AE3A.240806.043/12960925:userdebug/dev-keys",
+  "n": 2,
+  "trials": [
+    {
+      "mode": "fork",
+      "round": 0,
+      "n": 2,
+      "name": "Mira Shah",
+      "scored_s": 39.0977984580677,
+      "total_s": 40.842880374984816,
+      "stages": {
+        "reset_s": 3.8443223340436816,
+        "shared_prefix_s": 11.92272595805116,
+        "snapshot_s": 2.4598139161244035,
+        "fork_rpc_s": 4.533192417118698,
+        "first_action_s": 4.741835583001375,
+        "fork_through_all_first_actions_s": 9.275051292032003,
+        "suffix_and_judge_s": 8.302840291056782,
+        "release_s": 1.7450696660671383
+      },
+      "outcomes": [
+        {
+          "chosen_number": "2025550137",
+          "reward": 1.0,
+          "alternate_reward": 0.0,
+          "judge_s": 2.4492877500597388
+        },
+        {
+          "chosen_number": "2025550184",
+          "reward": 0.0,
+          "alternate_reward": 1.0,
+          "judge_s": 2.951808749930933
+        }
+      ],
+      "post_action_signatures": [
+        {
+          "pixels": "0aed0fd2b2ea6d86541deb9dcaff09d80b956f3bbd709a96139ffc882be001f6",
+          "xml": "d9587574425594607dfe1176a329540d7fa1b9e484861adcf3b384011ddbb12d",
+          "app_tree": "b5e630783b2ba6d5f1adb7c4ef6b548fae0d2ba8efd9f37315cfdffb88725350"
+        },
+        {
+          "pixels": "0aed0fd2b2ea6d86541deb9dcaff09d80b956f3bbd709a96139ffc882be001f6",
+          "xml": "bd650e62926a52060d0a36948e20d243700d0e14059d2652b54cd53feee62620",
+          "app_tree": "b5e630783b2ba6d5f1adb7c4ef6b548fae0d2ba8efd9f37315cfdffb88725350"
+        }
+      ],
+      "shared_actions": [
+        {
+          "action": {
+            "type": "launch",
+            "app": "contacts"
+          },
+          "seconds": 3.6679603750817478,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "Create contact"
+          },
+          "seconds": 1.7510434158612043,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "First name"
+          },
+          "seconds": 0.8645571670494974,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "Mira"
+          },
+          "seconds": 0.9379126660060138,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "Last name"
+          },
+          "seconds": 1.3389621251262724,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "Shah"
+          },
+          "seconds": 0.9670837090816349,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "Company"
+          },
+          "seconds": 1.2563485829159617,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "Northline Studio"
+          },
+          "seconds": 1.138152499916032,
+          "idle": true
+        }
+      ],
+      "branch_actions": [
+        [
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 4.73482450004667,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550137"
+            },
+            "seconds": 2.451430750079453,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 3.4006316249724478,
+            "idle": false
+          }
+        ],
+        [
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 4.6764469591435045,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550184"
+            },
+            "seconds": 1.8287302919197828,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 2.076257040956989,
+            "idle": true
+          }
+        ]
+      ]
+    },
+    {
+      "mode": "warm",
+      "round": 0,
+      "n": 2,
+      "name": "Mira Shah",
+      "scored_s": 24.401370625011623,
+      "total_s": 24.401372249936685,
+      "stages": {
+        "reset_s": 2.596800958039239,
+        "parallel_prefix_s": 14.616599333006889,
+        "first_action_s": 1.133945042034611,
+        "suffix_and_judge_s": 6.054020333103836,
+        "release_s": 4.5797787606716156e-07
+      },
+      "outcomes": [
+        {
+          "chosen_number": "2025550137",
+          "reward": 1.0,
+          "alternate_reward": 0.0,
+          "judge_s": 1.961496208095923
+        },
+        {
+          "chosen_number": "2025550184",
+          "reward": 0.0,
+          "alternate_reward": 1.0,
+          "judge_s": 2.236877707997337
+        }
+      ],
+      "post_action_signatures": [
+        {
+          "pixels": "1d2938b40e2a70172c544b64ea5b04010394f70e2cc116925b5e79ef68788a1b",
+          "xml": "ee7fc3eddf8420447048f950c1582b50a05f2c88e6b2f61699c8daa1813be0be",
+          "app_tree": "b5e630783b2ba6d5f1adb7c4ef6b548fae0d2ba8efd9f37315cfdffb88725350"
+        },
+        {
+          "pixels": "288e6c6ce3559fccd95b93f310efa1c7fe2d8815bec9c9be72cbbf227762a299",
+          "xml": "47e542ae5733811b952da16cb8606a36c5c8a0765bbcd0b2a3f3b92f41cb3517",
+          "app_tree": "b5e630783b2ba6d5f1adb7c4ef6b548fae0d2ba8efd9f37315cfdffb88725350"
+        }
+      ],
+      "shared_actions": [],
+      "branch_actions": [
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 4.919517458882183,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.617756458930671,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 0.9741583750583231,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Mira"
+            },
+            "seconds": 0.9232365421485156,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 0.8773185410536826,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Shah"
+            },
+            "seconds": 0.8508160000201315,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 0.8637838750146329,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 0.8512704579625279,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 0.8539774171076715,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550137"
+            },
+            "seconds": 0.8642952910158783,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 1.504469082923606,
+            "idle": true
+          }
+        ],
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 5.026426834054291,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.0377983329817653,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 1.280710290884599,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Mira"
+            },
+            "seconds": 1.070411582943052,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 1.2107161658350378,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Shah"
+            },
+            "seconds": 0.9412266670260578,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 1.8034887500107288,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 1.2446679580025375,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 1.1284040831960738,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550184"
+            },
+            "seconds": 1.2534506670199335,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 2.562656542053446,
+            "idle": false
+          }
+        ]
+      ],
+      "prewarm_s": 4.625535957980901,
+      "retire_warm_pool_s": 1.5834159580990672
+    },
+    {
+      "mode": "cold",
+      "round": 0,
+      "n": 2,
+      "name": "Mira Shah",
+      "scored_s": 45.390960625139996,
+      "total_s": 46.69096420798451,
+      "stages": {
+        "reset_s": 19.166047542123124,
+        "parallel_prefix_s": 20.313616917002946,
+        "first_action_s": 0.91148079209961,
+        "suffix_and_judge_s": 4.999809833941981,
+        "release_s": 1.3000019581522793
+      },
+      "outcomes": [
+        {
+          "chosen_number": "2025550137",
+          "reward": 1.0,
+          "alternate_reward": 0.0,
+          "judge_s": 2.2254618329461664
+        },
+        {
+          "chosen_number": "2025550184",
+          "reward": 0.0,
+          "alternate_reward": 1.0,
+          "judge_s": 2.130310291890055
+        }
+      ],
+      "post_action_signatures": [
+        {
+          "pixels": "25eb82972ad2f43a3e29b48e615b98f5c402ce4eb5a5dc1b007478516278778e",
+          "xml": "9ad83d151517522af1996b41253210827a53a796a28482f2e44f2389579b895f",
+          "app_tree": "5b5ee79212ac723357526f0a944078cec43f3bb8ef1800420938b563b1383208"
+        },
+        {
+          "pixels": "25eb82972ad2f43a3e29b48e615b98f5c402ce4eb5a5dc1b007478516278778e",
+          "xml": "d4b90f6cf45e79552725234d3f63a66e66ad226bba531e62d86c3314003b8424",
+          "app_tree": "5b5ee79212ac723357526f0a944078cec43f3bb8ef1800420938b563b1383208"
+        }
+      ],
+      "shared_actions": [],
+      "branch_actions": [
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 9.156472291098908,
+            "idle": false
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.738086041994393,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 1.9681896660476923,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Mira"
+            },
+            "seconds": 1.3590888751205057,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 1.4020672079641372,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Shah"
+            },
+            "seconds": 1.2462704998906702,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 1.0283145420253277,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 1.1460335000883788,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 0.9062317498028278,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550137"
+            },
+            "seconds": 0.983722582925111,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 1.7897694997955114,
+            "idle": true
+          }
+        ],
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 10.263463499955833,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.437036667019129,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 2.4642703339923173,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Mira"
+            },
+            "seconds": 1.352163374889642,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 1.156005458207801,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Shah"
+            },
+            "seconds": 0.8650483330711722,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 0.9243894999381155,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 0.8502167919650674,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 0.8441743748262525,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550184"
+            },
+            "seconds": 0.9845341669861227,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 1.5839035420212895,
+            "idle": true
+          }
+        ]
+      ]
+    },
+    {
+      "mode": "warm",
+      "round": 1,
+      "n": 2,
+      "name": "Nora Patel",
+      "scored_s": 24.09194445796311,
+      "total_s": 24.091945542022586,
+      "stages": {
+        "reset_s": 2.564481999957934,
+        "parallel_prefix_s": 14.36277529085055,
+        "first_action_s": 1.0148753330577165,
+        "suffix_and_judge_s": 6.149804790969938,
+        "release_s": 1.6693957149982452e-07
+      },
+      "outcomes": [
+        {
+          "chosen_number": "2025550137",
+          "reward": 1.0,
+          "alternate_reward": 0.0,
+          "judge_s": 2.1171989999711514
+        },
+        {
+          "chosen_number": "2025550184",
+          "reward": 0.0,
+          "alternate_reward": 1.0,
+          "judge_s": 2.0400010000448674
+        }
+      ],
+      "post_action_signatures": [
+        {
+          "pixels": "35a7586a28a103b51a0e015db6c5fe54e95e5a29ab469255dece6dc2ee1ddc4e",
+          "xml": "964971e5e4be916236ee4e6f0eba8cc826635290da799da770490a6ea3119a0d",
+          "app_tree": "9d78464a14e8f11940d8e442949d0a405c3963348084512c4d1110930b562ee2"
+        },
+        {
+          "pixels": "35a7586a28a103b51a0e015db6c5fe54e95e5a29ab469255dece6dc2ee1ddc4e",
+          "xml": "964971e5e4be916236ee4e6f0eba8cc826635290da799da770490a6ea3119a0d",
+          "app_tree": "9d78464a14e8f11940d8e442949d0a405c3963348084512c4d1110930b562ee2"
+        }
+      ],
+      "shared_actions": [],
+      "branch_actions": [
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 5.150467499857768,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.5178096669260412,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 1.162820874946192,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Nora"
+            },
+            "seconds": 1.0005242079496384,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 1.194118999876082,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Patel"
+            },
+            "seconds": 1.061177082825452,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 0.9482491659000516,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 1.3266551662236452,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 1.0100800839718431,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550137"
+            },
+            "seconds": 1.2181594581343234,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 2.8136079169344157,
+            "idle": false
+          }
+        ],
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 4.831410000100732,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.1906692078337073,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 1.1851998339407146,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Nora"
+            },
+            "seconds": 1.088749541901052,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 0.9035627499688417,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Patel"
+            },
+            "seconds": 0.8513955830130726,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 0.9001104580238461,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 0.8415462088305503,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 0.8599548330530524,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550184"
+            },
+            "seconds": 0.8807417920324951,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 1.7949567909818143,
+            "idle": true
+          }
+        ]
+      ],
+      "prewarm_s": 4.397249417146668,
+      "retire_warm_pool_s": 1.0892493750434369
+    },
+    {
+      "mode": "cold",
+      "round": 1,
+      "n": 2,
+      "name": "Nora Patel",
+      "scored_s": 47.03423124994151,
+      "total_s": 48.70552333397791,
+      "stages": {
+        "reset_s": 19.94940441614017,
+        "parallel_prefix_s": 21.259941374883056,
+        "first_action_s": 0.9361074999906123,
+        "suffix_and_judge_s": 4.888774958904833,
+        "release_s": 1.6712905000895262
+      },
+      "outcomes": [
+        {
+          "chosen_number": "2025550137",
+          "reward": 1.0,
+          "alternate_reward": 0.0,
+          "judge_s": 1.95963479205966
+        },
+        {
+          "chosen_number": "2025550184",
+          "reward": 0.0,
+          "alternate_reward": 1.0,
+          "judge_s": 2.052381666144356
+        }
+      ],
+      "post_action_signatures": [
+        {
+          "pixels": "0e010331410b6066089cd360733a8902f9b667a4f333d513d41ac7b96215e0cd",
+          "xml": "15b5e0f4b116afeb06707653ffb885e1cb3465bc8eace634b261882df9fa978a",
+          "app_tree": "9d78464a14e8f11940d8e442949d0a405c3963348084512c4d1110930b562ee2"
+        },
+        {
+          "pixels": "45605ed4cc24ca9d89221b39bc5344fa32560c5a2cea4133b82a488ca3c6411c",
+          "xml": "a0286d3f7cf29dd96c71af1107df2e44dd0071c328966384230f68c7df1beb22",
+          "app_tree": "1eaeb2841eceb40b3ccfc603b618a744e753e2fec71cbd26418e68f628112ad6"
+        }
+      ],
+      "shared_actions": [],
+      "branch_actions": [
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 11.133713542018086,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.4327781670726836,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 1.3755390420556068,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Nora"
+            },
+            "seconds": 1.2422090000472963,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 1.4867706659715623,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Patel"
+            },
+            "seconds": 1.2148655001074076,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 1.1352669999469072,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 1.046603917144239,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 0.9313628331292421,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550137"
+            },
+            "seconds": 1.153920500073582,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 1.453413125127554,
+            "idle": true
+          }
+        ],
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 11.08329066587612,
+            "idle": false
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.8711602920666337,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 1.478776291012764,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Nora"
+            },
+            "seconds": 1.4466136670671403,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 1.4441152911167592,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Patel"
+            },
+            "seconds": 1.0451042091008276,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 0.9813317500520498,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 0.9084982080385089,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 0.8999064171221107,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550184"
+            },
+            "seconds": 1.1581557500176132,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 1.6773326250258833,
+            "idle": true
+          }
+        ]
+      ]
+    },
+    {
+      "mode": "fork",
+      "round": 1,
+      "n": 2,
+      "name": "Nora Patel",
+      "scored_s": 39.432993083959445,
+      "total_s": 40.95588020887226,
+      "stages": {
+        "reset_s": 4.115577916847542,
+        "shared_prefix_s": 12.495255833957344,
+        "snapshot_s": 2.6956063332036138,
+        "fork_rpc_s": 4.0530608331318945,
+        "first_action_s": 5.1093466251622885,
+        "fork_through_all_first_actions_s": 9.162440208019689,
+        "suffix_and_judge_s": 8.36210154206492,
+        "release_s": 1.522863958030939
+      },
+      "outcomes": [
+        {
+          "chosen_number": "2025550137",
+          "reward": 1.0,
+          "alternate_reward": 0.0,
+          "judge_s": 2.4812557499390095
+        },
+        {
+          "chosen_number": "2025550184",
+          "reward": 0.0,
+          "alternate_reward": 1.0,
+          "judge_s": 3.062057917006314
+        }
+      ],
+      "post_action_signatures": [
+        {
+          "pixels": "e93f68ba62be77b0f84a1e68ef50724dc65a11e6cd519164c9f7471ce81bc24c",
+          "xml": "7b13361003439e2caa10d655eb8c4ee860028edff46d583b6fc23207bf285dbc",
+          "app_tree": "9d78464a14e8f11940d8e442949d0a405c3963348084512c4d1110930b562ee2"
+        },
+        {
+          "pixels": "e93f68ba62be77b0f84a1e68ef50724dc65a11e6cd519164c9f7471ce81bc24c",
+          "xml": "8e6b7d1982486947badcd50ab2e5566f726e8461d0a654f50cb051c8dc266c30",
+          "app_tree": "9d78464a14e8f11940d8e442949d0a405c3963348084512c4d1110930b562ee2"
+        }
+      ],
+      "shared_actions": [
+        {
+          "action": {
+            "type": "launch",
+            "app": "contacts"
+          },
+          "seconds": 3.287650833139196,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "Create contact"
+          },
+          "seconds": 1.780136999906972,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "First name"
+          },
+          "seconds": 1.0332987089641392,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "Nora"
+          },
+          "seconds": 0.963644958101213,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "Last name"
+          },
+          "seconds": 1.0829853750765324,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "Patel"
+          },
+          "seconds": 1.1305690000299364,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "Company"
+          },
+          "seconds": 1.1045446251519024,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "Northline Studio"
+          },
+          "seconds": 2.1117832500021905,
+          "idle": true
+        }
+      ],
+      "branch_actions": [
+        [
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 4.904044082853943,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550137"
+            },
+            "seconds": 1.6242400840856135,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 4.254477666923776,
+            "idle": false
+          }
+        ],
+        [
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 5.100814250065014,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550184"
+            },
+            "seconds": 1.7062174580059946,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 1.7414367499295622,
+            "idle": true
+          }
+        ]
+      ]
+    },
+    {
+      "mode": "cold",
+      "round": 2,
+      "n": 2,
+      "name": "Arun Rao",
+      "scored_s": 46.83205941691995,
+      "total_s": 47.694109208881855,
+      "stages": {
+        "reset_s": 19.40730033395812,
+        "parallel_prefix_s": 22.039167165989056,
+        "first_action_s": 0.9233796249609441,
+        "suffix_and_judge_s": 4.4622057501692325,
+        "release_s": 0.8620483751874417
+      },
+      "outcomes": [
+        {
+          "chosen_number": "2025550137",
+          "reward": 1.0,
+          "alternate_reward": 0.0,
+          "judge_s": 1.9908798749092966
+        },
+        {
+          "chosen_number": "2025550184",
+          "reward": 0.0,
+          "alternate_reward": 1.0,
+          "judge_s": 1.966483292169869
+        }
+      ],
+      "post_action_signatures": [
+        {
+          "pixels": "3047020d8330175c9f75e073f0c15c134f6020dce34fa5b49f4339a195653c5f",
+          "xml": "a6981d15e730c3fd30a899ed7c87cf83294c060afacaceb68c7b74e5438ff688",
+          "app_tree": "a19cc7e88f340e5366a750392a003bdefddcb5da572fd5e203388d12abce2dac"
+        },
+        {
+          "pixels": "3047020d8330175c9f75e073f0c15c134f6020dce34fa5b49f4339a195653c5f",
+          "xml": "a6981d15e730c3fd30a899ed7c87cf83294c060afacaceb68c7b74e5438ff688",
+          "app_tree": "a19cc7e88f340e5366a750392a003bdefddcb5da572fd5e203388d12abce2dac"
+        }
+      ],
+      "shared_actions": [],
+      "branch_actions": [
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 11.967915374785662,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.470157459145412,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 1.4860601669643074,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Arun"
+            },
+            "seconds": 1.4486992920283228,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 1.6178424169775099,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Rao"
+            },
+            "seconds": 1.0056694999802858,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 1.0311170001514256,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 1.0108060000929981,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 0.9181872911285609,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550137"
+            },
+            "seconds": 0.9790716669522226,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 1.4913325000088662,
+            "idle": true
+          }
+        ],
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 9.231970957946032,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 3.816326249856502,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 1.344951415900141,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Arun"
+            },
+            "seconds": 1.3184521670918912,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 1.3426422078628093,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Rao"
+            },
+            "seconds": 1.270991374971345,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 1.0923701671417803,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 1.1557205829303712,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 0.8967402500566095,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550184"
+            },
+            "seconds": 0.9911647501867265,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 1.5010038330219686,
+            "idle": true
+          }
+        ]
+      ]
+    },
+    {
+      "mode": "fork",
+      "round": 2,
+      "n": 2,
+      "name": "Arun Rao",
+      "scored_s": 39.61592045798898,
+      "total_s": 41.01740866689943,
+      "stages": {
+        "reset_s": 3.776151959085837,
+        "shared_prefix_s": 11.990037832874805,
+        "snapshot_s": 2.5973212921526283,
+        "fork_rpc_s": 4.113501166924834,
+        "first_action_s": 6.220913624856621,
+        "fork_through_all_first_actions_s": 10.334426583955064,
+        "suffix_and_judge_s": 8.317028167191893,
+        "release_s": 1.4014869171660393
+      },
+      "outcomes": [
+        {
+          "chosen_number": "2025550137",
+          "reward": 1.0,
+          "alternate_reward": 0.0,
+          "judge_s": 2.391361917136237
+        },
+        {
+          "chosen_number": "2025550184",
+          "reward": 0.0,
+          "alternate_reward": 1.0,
+          "judge_s": 2.6344857499934733
+        }
+      ],
+      "post_action_signatures": [
+        {
+          "pixels": "92550d364947ce051721ac8f35f882750ba9ed4f3fbf18df5c64f78fa2a4e0ab",
+          "xml": "bdcbbaccfe8291ac14dfd52a31f239786a0c5ab41d224b8203e4677493719e80",
+          "app_tree": "a19cc7e88f340e5366a750392a003bdefddcb5da572fd5e203388d12abce2dac"
+        },
+        {
+          "pixels": "4ae69a4ee74bc5ba6b570db67c1bcb46965824fb0d3e3b60d1ef1f3138a11c89",
+          "xml": "b104cdfd887d9ecb4b5a167388b152e4ec86f512ea54838ff97c254241809581",
+          "app_tree": "a19cc7e88f340e5366a750392a003bdefddcb5da572fd5e203388d12abce2dac"
+        }
+      ],
+      "shared_actions": [
+        {
+          "action": {
+            "type": "launch",
+            "app": "contacts"
+          },
+          "seconds": 3.57667183293961,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "Create contact"
+          },
+          "seconds": 1.8431451250799,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "First name"
+          },
+          "seconds": 0.9918519160710275,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "Arun"
+          },
+          "seconds": 1.0101729170419276,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "Last name"
+          },
+          "seconds": 1.0556703340262175,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "Rao"
+          },
+          "seconds": 1.0830967500805855,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "Company"
+          },
+          "seconds": 1.2940204998012632,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "Northline Studio"
+          },
+          "seconds": 1.1348052921239287,
+          "idle": true
+        }
+      ],
+      "branch_actions": [
+        [
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 6.210035708034411,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550137"
+            },
+            "seconds": 1.570958541939035,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 4.35323691717349,
+            "idle": true
+          }
+        ],
+        [
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 5.5343662921804935,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550184"
+            },
+            "seconds": 1.5575316660106182,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 3.8855370827950537,
+            "idle": false
+          }
+        ]
+      ]
+    },
+    {
+      "mode": "warm",
+      "round": 2,
+      "n": 2,
+      "name": "Arun Rao",
+      "scored_s": 24.385371583048254,
+      "total_s": 24.385372624965385,
+      "stages": {
+        "reset_s": 2.8062818748876452,
+        "parallel_prefix_s": 14.123001666972414,
+        "first_action_s": 1.0702282921411097,
+        "suffix_and_judge_s": 6.3858468749094754,
+        "release_s": 3.3294782042503357e-07
+      },
+      "outcomes": [
+        {
+          "chosen_number": "2025550137",
+          "reward": 1.0,
+          "alternate_reward": 0.0,
+          "judge_s": 2.2149509580340236
+        },
+        {
+          "chosen_number": "2025550184",
+          "reward": 0.0,
+          "alternate_reward": 1.0,
+          "judge_s": 1.9398053328040987
+        }
+      ],
+      "post_action_signatures": [
+        {
+          "pixels": "4c2e648d6307ff01ed83f1873aedaed41cd07a5fbeb80debf75b6ba97bd3ffa7",
+          "xml": "e66d71ee7bf38416342944de91d46a1930e0d8d85e6d382d736b7c3f9351d974",
+          "app_tree": "a19cc7e88f340e5366a750392a003bdefddcb5da572fd5e203388d12abce2dac"
+        },
+        {
+          "pixels": "dfc0e79955c007e45885a685ebafa009aa0ec9143c8cecc459d8aa1ae2ec1174",
+          "xml": "1f9ba6f817925e7ef1cb084b236fc4b54d218b76737cb2705527b27ac1ce38ce",
+          "app_tree": "a19cc7e88f340e5366a750392a003bdefddcb5da572fd5e203388d12abce2dac"
+        }
+      ],
+      "shared_actions": [],
+      "branch_actions": [
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 4.300360416062176,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.116058374987915,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 1.2258058339357376,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Arun"
+            },
+            "seconds": 1.1051685828715563,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 1.327358084032312,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Rao"
+            },
+            "seconds": 1.107487125089392,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 1.8458057909738272,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 1.0939911669120193,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 1.0649919579736888,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550137"
+            },
+            "seconds": 1.5826073340140283,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 2.587430290877819,
+            "idle": true
+          }
+        ],
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 5.074603875167668,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.316711332881823,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 0.9366476251743734,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Arun"
+            },
+            "seconds": 0.9716644170694053,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 0.9198343751486391,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Rao"
+            },
+            "seconds": 0.8350413339212537,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 1.0828929159324616,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 0.8678289160598069,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 0.9219734168145806,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550184"
+            },
+            "seconds": 0.9162724169436842,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 1.5665894581470639,
+            "idle": true
+          }
+        ]
+      ],
+      "prewarm_s": 4.576279375003651,
+      "retire_warm_pool_s": 1.6609217079821974
+    },
+    {
+      "mode": "fork",
+      "round": 3,
+      "n": 2,
+      "name": "Tara Sen",
+      "scored_s": 38.99047408392653,
+      "total_s": 40.72070704190992,
+      "stages": {
+        "reset_s": 3.163147582905367,
+        "shared_prefix_s": 13.221819292055443,
+        "snapshot_s": 2.93862474989146,
+        "fork_rpc_s": 4.298411207972094,
+        "first_action_s": 4.288475916022435,
+        "fork_through_all_first_actions_s": 8.586916167056188,
+        "suffix_and_judge_s": 8.271615500096232,
+        "release_s": 1.7302175839431584
+      },
+      "outcomes": [
+        {
+          "chosen_number": "2025550137",
+          "reward": 1.0,
+          "alternate_reward": 0.0,
+          "judge_s": 2.69625037512742
+        },
+        {
+          "chosen_number": "2025550184",
+          "reward": 0.0,
+          "alternate_reward": 1.0,
+          "judge_s": 2.5583359580487013
+        }
+      ],
+      "post_action_signatures": [
+        {
+          "pixels": "8e45be7e801a1a63bea41bbb38be2e8523a7ccc4858062235dbf7e38e4e250f1",
+          "xml": "bc7939c09c1ba701d2dd3f12bcf53fb9fd6c39b14e47321e6d81cf576f451ccf",
+          "app_tree": "45cab9c461abf2bfd86c18c997333d25c62332e6345a07549ef0da41e8083858"
+        },
+        {
+          "pixels": "8e45be7e801a1a63bea41bbb38be2e8523a7ccc4858062235dbf7e38e4e250f1",
+          "xml": "bc7939c09c1ba701d2dd3f12bcf53fb9fd6c39b14e47321e6d81cf576f451ccf",
+          "app_tree": "45cab9c461abf2bfd86c18c997333d25c62332e6345a07549ef0da41e8083858"
+        }
+      ],
+      "shared_actions": [
+        {
+          "action": {
+            "type": "launch",
+            "app": "contacts"
+          },
+          "seconds": 4.054740958148614,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "Create contact"
+          },
+          "seconds": 1.86159108299762,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "First name"
+          },
+          "seconds": 0.87502675014548,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "Tara"
+          },
+          "seconds": 0.9537671250291169,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "Last name"
+          },
+          "seconds": 1.1346371248364449,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "Sen"
+          },
+          "seconds": 1.0115137498360127,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "Company"
+          },
+          "seconds": 1.382890374865383,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "Northline Studio"
+          },
+          "seconds": 1.9469957500696182,
+          "idle": true
+        }
+      ],
+      "branch_actions": [
+        [
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 4.2812913749367,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550137"
+            },
+            "seconds": 1.4722748750355095,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 4.1015354169066995,
+            "idle": false
+          }
+        ],
+        [
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 3.784179916838184,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550184"
+            },
+            "seconds": 1.564984707860276,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 3.8493457078002393,
+            "idle": false
+          }
+        ]
+      ]
+    },
+    {
+      "mode": "warm",
+      "round": 3,
+      "n": 2,
+      "name": "Tara Sen",
+      "scored_s": 22.994592250091955,
+      "total_s": 22.99459300003946,
+      "stages": {
+        "reset_s": 2.468195958994329,
+        "parallel_prefix_s": 14.30462016700767,
+        "first_action_s": 1.2319689590949565,
+        "suffix_and_judge_s": 4.989792166976258,
+        "release_s": 2.0791776478290558e-07
+      },
+      "outcomes": [
+        {
+          "chosen_number": "2025550137",
+          "reward": 1.0,
+          "alternate_reward": 0.0,
+          "judge_s": 2.5093827499076724
+        },
+        {
+          "chosen_number": "2025550184",
+          "reward": 0.0,
+          "alternate_reward": 1.0,
+          "judge_s": 2.0193747498560697
+        }
+      ],
+      "post_action_signatures": [
+        {
+          "pixels": "f797a75dda94c2cefc88976ea68490e0650e8e766c2043b9b83a22828012050b",
+          "xml": "57016042fce5b424c29893ebc62d44e5caefad92ac6e7fcb0361e6b24d5b99d0",
+          "app_tree": "45cab9c461abf2bfd86c18c997333d25c62332e6345a07549ef0da41e8083858"
+        },
+        {
+          "pixels": "8716f993ebbf427805c1abfee7635600eeb389874e1369d3ac2cc1ed30404283",
+          "xml": "420bdebfbe0b71392368160386d54355186a9c3327deb9b2452d61b643f5ef35",
+          "app_tree": "45cab9c461abf2bfd86c18c997333d25c62332e6345a07549ef0da41e8083858"
+        }
+      ],
+      "shared_actions": [],
+      "branch_actions": [
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 4.757196750026196,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.3729024999774992,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 1.2120369581971318,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Tara"
+            },
+            "seconds": 0.9670803749468178,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 1.147206834051758,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Sen"
+            },
+            "seconds": 1.0471558328717947,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 1.179871124913916,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 1.6202415840234607,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 1.226575457956642,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550137"
+            },
+            "seconds": 1.2182054999284446,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 1.2613083748146892,
+            "idle": true
+          }
+        ],
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 5.384459250140935,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.202454375103116,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 0.9521612089592963,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Tara"
+            },
+            "seconds": 0.877729875035584,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 0.8944060001522303,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Sen"
+            },
+            "seconds": 0.8285414171405137,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 0.8983767081517726,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 0.8706428329460323,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 0.8714658750686795,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550184"
+            },
+            "seconds": 0.8826545418705791,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 1.5889771250076592,
+            "idle": true
+          }
+        ]
+      ],
+      "prewarm_s": 4.454256249824539,
+      "retire_warm_pool_s": 1.1551979170180857
+    },
+    {
+      "mode": "cold",
+      "round": 3,
+      "n": 2,
+      "name": "Tara Sen",
+      "scored_s": 46.13899550004862,
+      "total_s": 47.73814366594888,
+      "stages": {
+        "reset_s": 19.29481141688302,
+        "parallel_prefix_s": 21.035904416115955,
+        "first_action_s": 0.895901707932353,
+        "suffix_and_judge_s": 4.912371125072241,
+        "release_s": 1.5991469169966877
+      },
+      "outcomes": [
+        {
+          "chosen_number": "2025550137",
+          "reward": 1.0,
+          "alternate_reward": 0.0,
+          "judge_s": 2.01684462511912
+        },
+        {
+          "chosen_number": "2025550184",
+          "reward": 0.0,
+          "alternate_reward": 1.0,
+          "judge_s": 2.0273151248693466
+        }
+      ],
+      "post_action_signatures": [
+        {
+          "pixels": "375cac87f424f65fa8656d458725336d8437334a6f0eb437b4501c273fa3b000",
+          "xml": "c13bc047bab962496614b5620858c397411bcb29b42aef1a428c537b29827064",
+          "app_tree": "45cab9c461abf2bfd86c18c997333d25c62332e6345a07549ef0da41e8083858"
+        },
+        {
+          "pixels": "375cac87f424f65fa8656d458725336d8437334a6f0eb437b4501c273fa3b000",
+          "xml": "c13bc047bab962496614b5620858c397411bcb29b42aef1a428c537b29827064",
+          "app_tree": "45cab9c461abf2bfd86c18c997333d25c62332e6345a07549ef0da41e8083858"
+        }
+      ],
+      "shared_actions": [],
+      "branch_actions": [
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 8.553031750023365,
+            "idle": false
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.345725290942937,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 1.8837073328904808,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Tara"
+            },
+            "seconds": 1.1528077919501811,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 1.2691758330911398,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Sen"
+            },
+            "seconds": 1.2354654581286013,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 1.3612388339824975,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 1.0185440829955041,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 0.8910969169810414,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550137"
+            },
+            "seconds": 0.875134791014716,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 1.6347987921908498,
+            "idle": true
+          }
+        ],
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 12.737091082846746,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.0771829581353813,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 1.1791579998098314,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Tara"
+            },
+            "seconds": 1.3831368749961257,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 1.0209127499256283,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Sen"
+            },
+            "seconds": 0.8845815421082079,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 0.8959099168423563,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 0.8569137500599027,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 0.8876908749807626,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550184"
+            },
+            "seconds": 0.8912774580530822,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 1.9928197909612209,
+            "idle": true
+          }
+        ]
+      ]
+    },
+    {
+      "mode": "warm",
+      "round": 4,
+      "n": 2,
+      "name": "Lina Roy",
+      "scored_s": 25.995867958059534,
+      "total_s": 25.995868833037093,
+      "stages": {
+        "reset_s": 2.504980082856491,
+        "parallel_prefix_s": 15.484389124903828,
+        "first_action_s": 1.3894889999646693,
+        "suffix_and_judge_s": 6.616984625114128,
+        "release_s": 2.0815059542655945e-07
+      },
+      "outcomes": [
+        {
+          "chosen_number": "2025550137",
+          "reward": 1.0,
+          "alternate_reward": 0.0,
+          "judge_s": 2.1454765000380576
+        },
+        {
+          "chosen_number": "2025550184",
+          "reward": 0.0,
+          "alternate_reward": 1.0,
+          "judge_s": 2.3369355420581996
+        }
+      ],
+      "post_action_signatures": [
+        {
+          "pixels": "d5c6f7ab1329d8c80decf95925b02b39728851445220928c39bf668b4596ef74",
+          "xml": "ea7bffede8c01f46ada4d8641cc2b8138f3958ef64a83204835b12da5d5a91ef",
+          "app_tree": "ca2a5b27d2a531be5a35cf3656d6968c2c5d61bb11e506b9e9215fed7191d410"
+        },
+        {
+          "pixels": "92d16248ff62343589c8c2c7b0c4f80616ce0501e10d1167a77e32d24b1f5fdd",
+          "xml": "828eaef29abcb2cf410a93742a603948119a9d49bcbd3d5b466f7627fecdc123",
+          "app_tree": "ca2a5b27d2a531be5a35cf3656d6968c2c5d61bb11e506b9e9215fed7191d410"
+        }
+      ],
+      "shared_actions": [],
+      "branch_actions": [
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 4.713891291990876,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.802397333085537,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 1.168545207940042,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Lina"
+            },
+            "seconds": 1.064525542082265,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 1.8695665830746293,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Roy"
+            },
+            "seconds": 1.2373931671027094,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 1.288361124927178,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 1.338626999873668,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 1.3835765421390533,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550137"
+            },
+            "seconds": 1.2264350838959217,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 3.2441760839428753,
+            "idle": false
+          }
+        ],
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 5.019475917099044,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.8172319589648396,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 1.0184501660987735,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Lina"
+            },
+            "seconds": 0.941885583801195,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 1.4765844999346882,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Roy"
+            },
+            "seconds": 0.8608104169834405,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 0.9027334998827428,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 0.8994750001002103,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 0.8627774170599878,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550184"
+            },
+            "seconds": 0.922257874859497,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 1.8577215410768986,
+            "idle": true
+          }
+        ]
+      ],
+      "prewarm_s": 4.686475333059207,
+      "retire_warm_pool_s": 0.9087517498992383
+    },
+    {
+      "mode": "cold",
+      "round": 4,
+      "n": 2,
+      "name": "Lina Roy",
+      "scored_s": 46.40127899986692,
+      "total_s": 47.735619083978236,
+      "stages": {
+        "reset_s": 19.635836750036106,
+        "parallel_prefix_s": 21.40241837501526,
+        "first_action_s": 0.8972760001197457,
+        "suffix_and_judge_s": 4.465745124965906,
+        "release_s": 1.3343387499917299
+      },
+      "outcomes": [
+        {
+          "chosen_number": "2025550137",
+          "reward": 1.0,
+          "alternate_reward": 0.0,
+          "judge_s": 1.947943250183016
+        },
+        {
+          "chosen_number": "2025550184",
+          "reward": 0.0,
+          "alternate_reward": 1.0,
+          "judge_s": 1.9738759170286357
+        }
+      ],
+      "post_action_signatures": [
+        {
+          "pixels": "79ef2a5a9bcee7e4d549ad1e10a478478abfdb8f0b828f05308f16371caa4cd1",
+          "xml": "b2961c3abe9756a800516b09f0fca27b4d5f935e74fc5dcb5158d372547d4fb5",
+          "app_tree": "4e67f5f55a0ef35d484bf553b0e68312b3cece08b4e04c4d52650cf29a19c603"
+        },
+        {
+          "pixels": "a23c49ed08ec6eb92e88ff6b8af029cc9f29cb0b512491ac30f351d19acd5e5d",
+          "xml": "87177839ef889dec1f4579fc5b96b583d5458ddc958b65c32585558c304f009a",
+          "app_tree": "ca2a5b27d2a531be5a35cf3656d6968c2c5d61bb11e506b9e9215fed7191d410"
+        }
+      ],
+      "shared_actions": [],
+      "branch_actions": [
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 11.886355458991602,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 2.561546582961455,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 1.2952001250814646,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Lina"
+            },
+            "seconds": 1.1106292081531137,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 1.2721516250167042,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Roy"
+            },
+            "seconds": 1.4539922080002725,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 0.954578708158806,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 0.867118792142719,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 0.8924571250099689,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550137"
+            },
+            "seconds": 0.9119106670841575,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 1.6050235407892615,
+            "idle": true
+          }
+        ],
+        [
+          {
+            "action": {
+              "type": "launch",
+              "app": "contacts"
+            },
+            "seconds": 11.724924500100315,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Create contact"
+            },
+            "seconds": 1.8946855829562992,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "First name"
+            },
+            "seconds": 1.2436405830085278,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Lina"
+            },
+            "seconds": 1.314182790927589,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Last name"
+            },
+            "seconds": 1.302628458943218,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Roy"
+            },
+            "seconds": 1.5352217911276966,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Company"
+            },
+            "seconds": 1.1051203331444412,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "Northline Studio"
+            },
+            "seconds": 0.9399627081584185,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 0.8621429160702974,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550184"
+            },
+            "seconds": 0.926290167029947,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 1.435306959087029,
+            "idle": true
+          }
+        ]
+      ]
+    },
+    {
+      "mode": "fork",
+      "round": 4,
+      "n": 2,
+      "name": "Lina Roy",
+      "scored_s": 41.70675054099411,
+      "total_s": 43.382754541002214,
+      "stages": {
+        "reset_s": 3.3682444160804152,
+        "shared_prefix_s": 13.180550290970132,
+        "snapshot_s": 3.12155754189007,
+        "fork_rpc_s": 4.403618292184547,
+        "first_action_s": 4.851266167126596,
+        "fork_through_all_first_actions_s": 9.254912958014756,
+        "suffix_and_judge_s": 8.983041416853666,
+        "release_s": 1.6759942909702659
+      },
+      "outcomes": [
+        {
+          "chosen_number": "2025550137",
+          "reward": 1.0,
+          "alternate_reward": 0.0,
+          "judge_s": 2.499754708027467
+        },
+        {
+          "chosen_number": "2025550184",
+          "reward": 0.0,
+          "alternate_reward": 1.0,
+          "judge_s": 2.574559041997418
+        }
+      ],
+      "post_action_signatures": [
+        {
+          "pixels": "7af5adf687f3c9ce52966b464bbcd585f7ec15071e8b84c74f12c1c414af2b78",
+          "xml": "6bf1ef7ffbfc2d31daaabcc49554826b1fd214ee3f483a43089508c921165a60",
+          "app_tree": "ca2a5b27d2a531be5a35cf3656d6968c2c5d61bb11e506b9e9215fed7191d410"
+        },
+        {
+          "pixels": "5b0c548a19e9bf57f4e2e012522f090771b4f9aa4583709d8de65d12be57156a",
+          "xml": "6bf1ef7ffbfc2d31daaabcc49554826b1fd214ee3f483a43089508c921165a60",
+          "app_tree": "ca2a5b27d2a531be5a35cf3656d6968c2c5d61bb11e506b9e9215fed7191d410"
+        }
+      ],
+      "shared_actions": [
+        {
+          "action": {
+            "type": "launch",
+            "app": "contacts"
+          },
+          "seconds": 5.090808750130236,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "Create contact"
+          },
+          "seconds": 1.4672140420880169,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "First name"
+          },
+          "seconds": 0.9741030000150204,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "Lina"
+          },
+          "seconds": 1.120844209101051,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "Last name"
+          },
+          "seconds": 1.0303407909814268,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "Roy"
+          },
+          "seconds": 1.1900872502010316,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "tap",
+            "label": "Company"
+          },
+          "seconds": 1.1755657908506691,
+          "idle": true
+        },
+        {
+          "action": {
+            "type": "type",
+            "text": "Northline Studio"
+          },
+          "seconds": 1.1309057909529656,
+          "idle": true
+        }
+      ],
+      "branch_actions": [
+        [
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 4.845287791918963,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550137"
+            },
+            "seconds": 1.931563416030258,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 4.545444124843925,
+            "idle": false
+          }
+        ],
+        [
+          {
+            "action": {
+              "type": "tap",
+              "label": "Phone"
+            },
+            "seconds": 4.6358354589901865,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "type",
+              "text": "2025550184"
+            },
+            "seconds": 1.5647705420851707,
+            "idle": true
+          },
+          {
+            "action": {
+              "type": "tap",
+              "label": "Save"
+            },
+            "seconds": 3.9628510421607643,
+            "idle": false
+          }
+        ]
+      ]
+    }
+  ]
+}

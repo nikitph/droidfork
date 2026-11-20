@@ -1,0 +1,23 @@
+diff --git a/android/emu/adb/interface/src/android/emulation/control/adb/AdbInterface.cpp b/android/emu/adb/interface/src/android/emulation/control/adb/AdbInterface.cpp
+index 19564b418..0a5787109 100644
+--- a/android/emu/adb/interface/src/android/emulation/control/adb/AdbInterface.cpp
++++ b/android/emu/adb/interface/src/android/emulation/control/adb/AdbInterface.cpp
+@@ -501,6 +501,18 @@ AdbInterfaceImpl::AdbInterfaceImpl(Looper* looper,
+     if (!getConsoleAgents()->settings->android_qemu_mode()) {
+         return;
+     }
++    // A headless worker can use one explicitly selected, executable SDK adb.
++    // Probe it once. Keep normal discovery as the fallback.
++    if (const char* path = getenv("DROIDFORK_FIXED_ADB")) {
++        if (path[0] == '/' && System::get()->pathCanExec(path)) {
++            if (auto version = mLocator->getAdbProtocolVersion(path)) {
++                mAutoAdbPath = mCustomAdbPath = path;
++                mAdbVersionCurrent = *version >= kMinAdbProtocol;
++                if (getenv("DROIDFORK_TRACE")) fprintf(stderr, "DFstage adb_selected\n");
++                return;
++            }
++        }
++    }
+     discoverAdbInstalls();
+     selectAdbPath();
+ }

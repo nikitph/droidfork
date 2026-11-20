@@ -1,0 +1,145 @@
+{
+  "task": "contacts-editor",
+  "trials": [
+    {
+      "after": {
+        "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+        "app_tree": "3bfe8e5d0bb69ad7bf9f930b676fe8451c9d04824826996466eb34aed5d53e5f",
+        "pixels": "5ea1ee5eeba5465e867397dc9398813215be51b4a26c61ea8f587d8f0635cf97",
+        "xml": "3b9457892fe81f005eb7f098354effb0da6e7b1c154a0cb84db063fb5655114d"
+      },
+      "before": {
+        "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+        "app_tree": "3bfe8e5d0bb69ad7bf9f930b676fe8451c9d04824826996466eb34aed5d53e5f",
+        "pixels": "7c299ee5c3024369de1468076af1c7fbefe1863bce4b7cc437f1a0504322f595",
+        "xml": "3b9457892fe81f005eb7f098354effb0da6e7b1c154a0cb84db063fb5655114d"
+      },
+      "database_sha256": "d94df32e3847c7e1e54f171424cd0ecf61a1e8f266bcf54810238008fad6b05b",
+      "db_bytes": 319488,
+      "form_and_provider_match": true,
+      "manifest_bytes": 470,
+      "name": "Mira Shah",
+      "pixel_difference": {
+        "bbox": [
+          232,
+          588,
+          235,
+          619
+        ],
+        "different_pixels": 93,
+        "pixel_count": 409920
+      },
+      "restore_s": 7.910851042019203,
+      "reward": 1,
+      "snapshot_s": 0.36746416706591845
+    },
+    {
+      "after": {
+        "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+        "app_tree": "03f9cf7382132502df9efd953caa7831f503cff223f0f97fc6d93b8ce7f70153",
+        "pixels": "d0318e101bf8957a1aa5563de665662f0e6e049fc37f44e6a9c444ebded7e801",
+        "xml": "67f4119372e4da579459950b03a4eef8b31cd3948082fd206bce77c46778d519"
+      },
+      "before": {
+        "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+        "app_tree": "03f9cf7382132502df9efd953caa7831f503cff223f0f97fc6d93b8ce7f70153",
+        "pixels": "d0318e101bf8957a1aa5563de665662f0e6e049fc37f44e6a9c444ebded7e801",
+        "xml": "cdea496e684edf93ae832534ff4a0ac7f37cf87f3499d43f0ef30e8c36ede61f"
+      },
+      "database_sha256": "59b74067d40496fc750c1261be20c86e87a932360d8345295a3178ce7b24bdce",
+      "db_bytes": 319488,
+      "form_and_provider_match": true,
+      "manifest_bytes": 471,
+      "name": "Nora Patel",
+      "pixel_difference": {
+        "bbox": null,
+        "different_pixels": 0,
+        "pixel_count": 409920
+      },
+      "restore_s": 6.944058457855135,
+      "reward": 1,
+      "snapshot_s": 0.2142430420499295
+    },
+    {
+      "after": {
+        "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+        "app_tree": "dfd077c5a624ff23f605050c83ed5536f603892fa3265a385ef4486bb86f455d",
+        "pixels": "1029860125c053b60317c64c23dd15a3791d8f90ace4c07f7355f03e568ccbe4",
+        "xml": "354d89961725c6d36534f77accc78f3dfe40558688c2170e108c6e04defacbaa"
+      },
+      "before": {
+        "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+        "app_tree": "dfd077c5a624ff23f605050c83ed5536f603892fa3265a385ef4486bb86f455d",
+        "pixels": "1029860125c053b60317c64c23dd15a3791d8f90ace4c07f7355f03e568ccbe4",
+        "xml": "354d89961725c6d36534f77accc78f3dfe40558688c2170e108c6e04defacbaa"
+      },
+      "database_sha256": "59b74067d40496fc750c1261be20c86e87a932360d8345295a3178ce7b24bdce",
+      "db_bytes": 319488,
+      "form_and_provider_match": true,
+      "manifest_bytes": 469,
+      "name": "Arun Rao",
+      "pixel_difference": {
+        "bbox": null,
+        "different_pixels": 0,
+        "pixel_count": 409920
+      },
+      "restore_s": 6.528078250121325,
+      "reward": 1,
+      "snapshot_s": 0.1841122091282159
+    },
+    {
+      "after": {
+        "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+        "app_tree": "e846688ff3e97a7c51d88c1495941730f6ef8510319249e5a0e2686c139e4a1a",
+        "pixels": "f06e76a3364d112e8191e5a26f242ee27cc272f0f7c412f906a30aaf45cd4247",
+        "xml": "3034e5164ee98c6ecde22ca59c41da595e7cd9cf24f567761afaad8c52682fda"
+      },
+      "before": {
+        "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+        "app_tree": "e846688ff3e97a7c51d88c1495941730f6ef8510319249e5a0e2686c139e4a1a",
+        "pixels": "f06e76a3364d112e8191e5a26f242ee27cc272f0f7c412f906a30aaf45cd4247",
+        "xml": "3034e5164ee98c6ecde22ca59c41da595e7cd9cf24f567761afaad8c52682fda"
+      },
+      "database_sha256": "59b74067d40496fc750c1261be20c86e87a932360d8345295a3178ce7b24bdce",
+      "db_bytes": 319488,
+      "form_and_provider_match": true,
+      "manifest_bytes": 469,
+      "name": "Tara Sen",
+      "pixel_difference": {
+        "bbox": null,
+        "different_pixels": 0,
+        "pixel_count": 409920
+      },
+      "restore_s": 6.725855916971341,
+      "reward": 1,
+      "snapshot_s": 0.18957795901224017
+    },
+    {
+      "after": {
+        "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+        "app_tree": "c3fb21fbf80f4c3fc678f1db80c1ca6b9b0688b454f80177fe92b5381f1b70ef",
+        "pixels": "cbedf013d04a7d0e9dea44f352c418a4f1f4ebe605f5011d9ba798c0a825cac3",
+        "xml": "3105d2bb3a9776299fa0c1e13d607d357863114101359db3fe9c3dcd31a4327b"
+      },
+      "before": {
+        "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+        "app_tree": "c3fb21fbf80f4c3fc678f1db80c1ca6b9b0688b454f80177fe92b5381f1b70ef",
+        "pixels": "cbedf013d04a7d0e9dea44f352c418a4f1f4ebe605f5011d9ba798c0a825cac3",
+        "xml": "3105d2bb3a9776299fa0c1e13d607d357863114101359db3fe9c3dcd31a4327b"
+      },
+      "database_sha256": "59b74067d40496fc750c1261be20c86e87a932360d8345295a3178ce7b24bdce",
+      "db_bytes": 319488,
+      "form_and_provider_match": true,
+      "manifest_bytes": 469,
+      "name": "Lina Roy",
+      "pixel_difference": {
+        "bbox": null,
+        "different_pixels": 0,
+        "pixel_count": 409920
+      },
+      "restore_s": 6.626903416123241,
+      "reward": 1,
+      "snapshot_s": 0.1881681669037789
+    }
+  ]
+}

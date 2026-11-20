@@ -1,0 +1,13 @@
+[project]
+name = "droidfork"
+version = "0.1.0"
+description = "Fork live Android GUI tasks and compare branches against stock emulator replay"
+requires-python = ">=3.11"
+dependencies = ["uiautomator2==3.7.1", "grpcio==1.85.3", "protobuf==7.36.2", "Pillow==13.0.0"]
+[project.optional-dependencies]
+codegen = ["grpcio-tools==1.85.3"]
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+[tool.setuptools.packages.find]
+include = ["droidfork*"]

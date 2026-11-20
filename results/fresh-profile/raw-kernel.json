@@ -1,0 +1,42 @@
+[
+  {
+    "mode": "frame-direct-map",
+    "node": "0f7f2b2c09d54258a08095cf3a7a6991",
+    "pid": 38193,
+    "log": ".lab/pool/logs/b92d7500c86a45909cba02b119e88200.log",
+    "spawn_s": 0.01417304202914238,
+    "connected_s": 0.9303502920083702,
+    "marker_s": 1.0241988748311996,
+    "xml_s": 3.8031790419481695,
+    "pixels_sha256": "8418a0c81f78dbf1cdda021c0d78e4fc1dd09217e1813f09f10f31ddd0eff713",
+    "frame_attempts": 1,
+    "verified_s": 4.248503000009805,
+    "observer_us": {
+      "authenticated": 148436,
+      "initial_focus": 423087,
+      "gesture_dispatch": 512921,
+      "gesture_complete": 941865,
+      "new_focus": 1378977,
+      "xml_ready": 2140048
+    },
+    "native_log": [
+      "0.062697 DFstage main",
+      "0.063561 DFstage crash_ready",
+      "0.064468 DFstage early_setup",
+      "0.064516 DFstage gpu_query_started",
+      "0.064554 DFstage agents_ready",
+      "0.130329 DFstage accel",
+      "0.134701 DFstage graphics_start",
+      "0.493224 DFstage renderer_dlopen",
+      "0.493277 DFstage renderer_library",
+      "0.714004 DFstage reporting_start",
+      "0.714069 DFstage metrics_ready",
+      "0.714076 DFstage crash_info",
+      "0.714082 DFstage reporting_done",
+      "0.754373 DroidFork HVF: mapped 163840 main RAM pages privately",
+      "0.755778 DroidFork RAM: 1 pages in 1 reads, 16.2 ms",
+      "0.858299 INFO         | Successfully loaded snapshot 'df_0f7f2b2c09d54258' using 145 ms"
+    ],
+    "resident_source": false
+  }
+]

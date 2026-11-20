@@ -1,0 +1,2 @@
+# Legacy Android hierarchy dumps retain the original CRLF line endings.
+results/evidence/*.xml -text whitespace=cr-at-eol

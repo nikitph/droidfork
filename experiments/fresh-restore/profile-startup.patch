@@ -1,0 +1,155 @@
+diff --git a/android-qemu2-glue/main.cpp b/android-qemu2-glue/main.cpp
+index 0d771bf1c..754a698ba 100644
+--- a/android-qemu2-glue/main.cpp
++++ b/android-qemu2-glue/main.cpp
+@@ -1609,6 +1609,7 @@ static SnapshotCompatibleType checkCompatable(std::string srcAvdDir,
+
+ extern "C" AndroidProxyCB* gAndroidProxyCB;
+ extern "C" int main(int argc, char** argv) {
++    if (getenv("DROIDFORK_TRACE")) fprintf(stderr, "DFstage main\n");
+ #ifndef _WIN32
+     if (getenv("ANDROID_CLI") && strcmp(getenv("ANDROID_CLI"), "1") == 0) {
+         if (setsid() == -1 && errno != EPERM) {
+@@ -1623,11 +1624,15 @@ extern "C" int main(int argc, char** argv) {
+     }
+
+     // Initialize crash handler
++#ifdef __APPLE__
++    if (!getenv("DROIDFORK_SOFTWARE_RESTORE"))
++#endif
+ #ifdef _WIN32
+     const char*no_crashhandler = getenv("ANDROID_EMU_DISABLE_CRASHHANDLER");
+     if (!no_crashhandler || strcmp("1", no_crashhandler))
+ #endif
+         crashhandler_init(argc, argv);
++    if (getenv("DROIDFORK_TRACE")) fprintf(stderr, "DFstage crash_ready\n");
+ #ifdef __APPLE__
+     {
+         int ret;
+@@ -1672,9 +1677,11 @@ extern "C" int main(int argc, char** argv) {
+     }
+ #endif
+     process_early_setup(argc, argv);
++    if (getenv("DROIDFORK_TRACE")) fprintf(stderr, "DFstage early_setup\n");
+     android_report_session_phase(ANDROID_SESSION_PHASE_PARSEOPTIONS);
+     // Start GPU information query to use it later for the renderer seleciton.
+     async_query_host_gpu_start();
++    if (getenv("DROIDFORK_TRACE")) fprintf(stderr, "DFstage gpu_query_started\n");
+
+     const char* executable = argv[0];
+     // QtWebEngine requires the executable name in argv, so let's save it here,
+@@ -1698,6 +1705,7 @@ extern "C" int main(int argc, char** argv) {
+         }
+     }
+     injectQemuConsoleAgents(factory);
++    if (getenv("DROIDFORK_TRACE")) fprintf(stderr, "DFstage agents_ready\n");
+
+ #ifdef CONFIG_HEADLESS
+     getConsoleAgents()->settings->set_host_emulator_is_headless(true);
+@@ -2673,6 +2681,7 @@ extern "C" int main(int argc, char** argv) {
+     }
+
+     android_report_session_phase(ANDROID_SESSION_PHASE_INITACCEL);
++    if (getenv("DROIDFORK_TRACE")) fprintf(stderr, "DFstage accel\n");
+
+     // Make sure we always use the custom Android CPU definition.
+     args.add("-cpu");
+@@ -3289,6 +3298,7 @@ extern "C" int main(int argc, char** argv) {
+     }
+
+     android_report_session_phase(ANDROID_SESSION_PHASE_INITGPU);
++    if (getenv("DROIDFORK_TRACE")) fprintf(stderr, "DFstage graphics_start\n");
+
+     auto battery = getConsoleAgents()->battery;
+     if (battery && battery->setHasBattery) {
+@@ -3346,7 +3356,7 @@ extern "C" int main(int argc, char** argv) {
+         }
+
+         // We have a UI, so we can ask for consent for existing crashreports
+-        upload_crashes();
++        if (!getenv("DROIDFORK_SOFTWARE_RESTORE")) upload_crashes();
+
+         if (opts->ui_only) {
+             // UI only. emulator_initUserInterface() is done, so we're done.
+diff --git a/android/android-emu/android/opengles.cpp b/android/android-emu/android/opengles.cpp
+index bc4fc1111..fd5632999 100644
+--- a/android/android-emu/android/opengles.cpp
++++ b/android/android-emu/android/opengles.cpp
+@@ -211,6 +211,7 @@ static int initOpenglesEmulationImpl() {
+         }
+     }
+
++    if (getenv("DROIDFORK_TRACE")) fprintf(stderr, "DFstage renderer_dlopen\n");
+     /* Resolve the functions */
+     if (initOpenglesEmulationFuncs(rendererSo) < 0) {
+         derror("Gfxstream backend library mismatch. Be sure to use the correct "
+@@ -222,6 +223,7 @@ static int initOpenglesEmulationImpl() {
+     }
+
+     sRenderLib = initLibrary();
++    if (getenv("DROIDFORK_TRACE")) fprintf(stderr, "DFstage renderer_library\n");
+     if (!sRenderLib) {
+         derror("Gfxstream backend initialization failed!");
+         crashhandler_append_message_format("Gfxstream backend initialization failed!");
+diff --git a/android/emu/feature/src/android/opengl/NativeGpuInfo_darwin.cpp b/android/emu/feature/src/android/opengl/NativeGpuInfo_darwin.cpp
+index 5c7974b19..7d91e9813 100644
+--- a/android/emu/feature/src/android/opengl/NativeGpuInfo_darwin.cpp
++++ b/android/emu/feature/src/android/opengl/NativeGpuInfo_darwin.cpp
+@@ -90,6 +90,7 @@ void getGpuInfoListNative(GpuInfoList* out) {
+     // which should update the IOKit stuff to the
+     // correct GPU that will actually be used
+     // while the emulator is running.
++    if (getenv("DROIDFORK_SOFTWARE_RESTORE")) return;
+     macTouchOpenGL();
+
+     auto gpulist = GetGPUInfoMac();
+diff --git a/vl.c b/vl.c
+index 43a8b8bbc..afb1a52ba 100755
+--- a/vl.c
++++ b/vl.c
+@@ -3344,8 +3344,11 @@ static const char gpuEmulationInitFailureMessage[] =
+
+ static bool android_reporting_setup(void)
+ {
++    if (getenv("DROIDFORK_TRACE")) fprintf(stderr, "DFstage reporting_start\n");
+     android_init_metrics();
+-    registerCrashInfo();
++    if (getenv("DROIDFORK_TRACE")) fprintf(stderr, "DFstage metrics_ready\n");
++    if (!getenv("DROIDFORK_SOFTWARE_RESTORE")) registerCrashInfo();
++    if (getenv("DROIDFORK_TRACE")) fprintf(stderr, "DFstage crash_info\n");
+
+     if (!is_opengl_alive) {
+         derror(gpuEmulationInitFailureMessage);
+@@ -3353,7 +3356,8 @@ static bool android_reporting_setup(void)
+         crashhandler_die(gpuEmulationInitFailureMessage);
+         return false;
+     }
+-    android_check_for_updates();
++    if (!getenv("DROIDFORK_SOFTWARE_RESTORE")) android_check_for_updates();
++    if (getenv("DROIDFORK_TRACE")) fprintf(stderr, "DFstage reporting_done\n");
+
+     android_report_session_phase(ANDROID_SESSION_PHASE_RUNNING);
+     return true;
+@@ -5519,6 +5523,7 @@ static int main_impl(int argc, char** argv, void (*on_main_loop_done)(void))
+     }
+     parse_numa_opts(current_machine);
+
++    if (getenv("DROIDFORK_TRACE")) fprintf(stderr,"DFstage board_init\n");
+     machine_run_board_init(current_machine);
+     if (error_during_init != NULL) {
+         return 1;
+@@ -5615,6 +5620,7 @@ static int main_impl(int argc, char** argv, void (*on_main_loop_done)(void))
+     /* TODO: once all bus devices are qdevified, this should be done
+      * when bus is created by qdev.c */
+     qemu_register_reset(qbus_reset_all_fn, sysbus_get_default());
++    if (getenv("DROIDFORK_TRACE")) fprintf(stderr,"DFstage board_notifiers\n");
+     qemu_run_machine_init_done_notifiers();
+
+     if (rom_check_and_register_reset() != 0) {
+@@ -5628,5 +5634,6 @@ static int main_impl(int argc, char** argv, void (*on_main_loop_done)(void))
+        reading from the other reads, because timer polling functions query
+        clock values from the log. */
+     replay_checkpoint(CHECKPOINT_RESET);
++    if (getenv("DROIDFORK_TRACE")) fprintf(stderr,"DFstage initial_reset\n");
+     qemu_system_reset(SHUTDOWN_CAUSE_NONE);
+     register_global_state();

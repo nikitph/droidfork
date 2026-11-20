@@ -1,0 +1,270 @@
+diff --git a/android/android-emu/android/snapshot/RamLoader.cpp b/android/android-emu/android/snapshot/RamLoader.cpp
+index 62d1d2ce4..fcfd9c1d8 100644
+--- a/android/android-emu/android/snapshot/RamLoader.cpp
++++ b/android/android-emu/android/snapshot/RamLoader.cpp
+@@ -29,6 +29,14 @@
+ #include "android/utils/path.h"
+ #include "android/utils/file_io.h"
+
++#if defined(__APPLE__) && defined(__aarch64__)
++#include <CommonCrypto/CommonDigest.h>
++#include <fcntl.h>
++#include <sys/stat.h>
++#include <unistd.h>
++extern "C" bool droidfork_hvf_map_private(void*, size_t, int) __attribute__((weak_import));
++#endif
++#include <cstdlib>
+ #include <algorithm>
+ #include <atomic>
+ #include <cassert>
+@@ -757,7 +765,62 @@ bool RamLoader::readAllPages() {
+     std::vector<Page*> sortedPages;
+     sortedPages.reserve(mIndex.pages.size());
+
++    Page *mappedBegin = nullptr, *mappedEnd = nullptr;
++#if defined(__APPLE__) && defined(__aarch64__)
++    if (std::getenv("DROIDFORK_MAP_RAM")) {
++        char path[PATH_MAX];
++        if (!droidfork_hvf_map_private || fcntl(mStreamFd, F_GETPATH, path) < 0)
++            return false;
++        std::string raw = std::string(path).substr(0, std::string(path).rfind('/') + 1) + "droidfork-main.raw";
++        const char* shared = std::getenv("DROIDFORK_RAM_IMAGE");
++        int fd = open(shared ? shared : raw.c_str(), O_RDONLY | O_NOFOLLOW);
++        if (fd < 0) return false;
++        // The v2 index includes saved page hashes and their layout. Bind this
++        // offline-generated image to the exact index of the restored snapshot.
++        uint8_t header[40], digest[CC_SHA256_DIGEST_LENGTH];
++        const size_t indexBytes = mDiskSize - mIndexPos;
++        bool valid = indexBytes <= (64U << 20) && pread(fd, header, sizeof(header), 0) == sizeof(header)
++                     && memcmp(header, "DFRAM001", 8) == 0;
++        if (valid) {
++            std::vector<uint8_t> index(indexBytes);
++            valid = pread(mStreamFd, index.data(), indexBytes, mIndexPos) == (ssize_t)indexBytes &&
++                    CC_SHA256(index.data(), (CC_LONG)indexBytes, digest) &&
++                    memcmp(header + 8, digest, sizeof(digest)) == 0;
++        }
++        if (valid) {
++            for (auto& block : mIndex.blocks) {
++                if (block.ramBlock.id != "mach-virt.ram" || block.pagesBegin == block.pagesEnd)
++                    continue;
++                struct stat st;
++                if (fstat(fd, &st) == 0 && (size_t)st.st_size == block.ramBlock.totalSize + 16384 &&
++                    droidfork_hvf_map_private(block.ramBlock.hostPtr, block.ramBlock.totalSize, fd)) {
++                    if (std::getenv("DROIDFORK_PREFAULT_RAM")) {
++                        // Materialize writable checkpoint pages on the host. Zero
++                        // pages remain demand-paged. Both costs are on the fork clock.
++                        for (auto it = block.pagesBegin; it != block.pagesEnd; ++it) {
++                            if (!it->sizeOnDisk) continue;
++                            volatile uint8_t* addr = pagePtr(*it);
++                            const uint8_t value = *addr;
++                            *addr = value;
++                        }
++                    }
++                    mappedBegin = &*block.pagesBegin;
++                    mappedEnd = mappedBegin + (block.pagesEnd - block.pagesBegin);
++                }
++                break;
++            }
++        }
++        close(fd);
++        if (!mappedBegin) return false;
++        fprintf(stderr, "DroidFork HVF: mapped %zu main RAM pages privately\n", size_t(mappedEnd-mappedBegin));
++    }
++#endif
++
+     for (Page& page : mIndex.pages) {
++        if (mappedBegin && &page >= mappedBegin && &page < mappedEnd) {
++            page.state.store(uint8_t(State::Filled), std::memory_order_release);
++            continue;
++        }
+         if (page.sizeOnDisk) {
+             sortedPages.emplace_back(&page);
+         } else if (!mIsQuickboot) {
+@@ -770,11 +833,52 @@ bool RamLoader::readAllPages() {
+                   return l->filePos < r->filePos;
+               });
+
+-    for (Page* page : sortedPages) {
+-        if (!readDataFromDisk(page, pagePtr(*page))) {
+-            mHasError = true;
+-            return false;
++    // A non-compressed checkpoint commonly contains long runs that are adjacent
++    // both in the file and in the same guest RAM block. Read a run directly into
++    // its final memory range, preserving the ordinary page state transitions.
++    const bool batch = !nonzero(mIndex.flags & IndexFlags::CompressedPages) &&
++                       std::getenv("DROIDFORK_BATCH_RAM") != nullptr;
++    size_t runs = 0;
++    for (size_t i = 0; i < sortedPages.size();) {
++        Page* first = sortedPages[i];
++        const size_t bytes = pageSize(*first);
++        size_t end = i + 1;
++        if (batch && first->sizeOnDisk == bytes) {
++            while (end < sortedPages.size() && (end - i) * bytes < (4U << 20)) {
++                Page* next = sortedPages[end];
++                if (next != sortedPages[end - 1] + 1 ||
++                    next->blockIndex != first->blockIndex ||
++                    next->sizeOnDisk != bytes ||
++                    next->filePos != first->filePos + (end - i) * bytes) break;
++                ++end;
++            }
+         }
++        if (end - i == 1) {
++            if (!readDataFromDisk(first, pagePtr(*first))) {
++                mHasError = true;
++                return false;
++            }
++        } else {
++            const size_t length = (end - i) * bytes;
++            const auto n = HANDLE_EINTR(base::pread(mStreamFd, pagePtr(*first),
++                                                     length, first->filePos));
++            if (n < 0 || static_cast<size_t>(n) != length) {
++                mHasError = true;
++                return false;
++            }
++            for (size_t k = i; k < end; ++k) {
++                Page* page = sortedPages[k];
++                page->data = pagePtr(*page);
++                page->state.store(uint8_t(State::Read), std::memory_order_release);
++            }
++        }
++        ++runs;
++        i = end;
++    }
++    if (batch) {
++        fprintf(stderr, "DroidFork RAM: %zu pages in %zu reads, %.1f ms\n",
++                sortedPages.size(), runs,
++                (base::System::get()->getHighResTimeUs() - mStartTime) / 1000.0);
+     }
+
+     mDecompressor.clear();
+diff --git a/android/third_party/netsim/backend/packet_streamer_client.cc b/android/third_party/netsim/backend/packet_streamer_client.cc
+index c547897b0..c28e75f37 100644
+--- a/android/third_party/netsim/backend/packet_streamer_client.cc
++++ b/android/third_party/netsim/backend/packet_streamer_client.cc
+@@ -15,6 +15,7 @@
+ #include "backend/packet_streamer_client.h"
+
+ #include <chrono>
++#include <cstdlib>
+ #include <mutex>
+ #include <optional>
+ #include <thread>
+@@ -133,7 +134,23 @@ std::shared_ptr<grpc::Channel> GetChannel(NetsimdOptions options) {
+       netsimProc = RunNetsimd(options);
+     }
+     BtsLogInfo("Retry connecting to netsim in %d second.", second);
+-    std::this_thread::sleep_for(std::chrono::seconds(second));
++    if (std::getenv("DROIDFORK_FAST_NETSIM") && netsimProc &&
++        custom_packet_stream_endpoint.empty()) {
++      // Discover the local daemon as soon as it publishes its port. Keep the
++      // original retry budget, and verify a real gRPC connection before use.
++      const auto until = std::chrono::steady_clock::now() + std::chrono::seconds(second);
++      do {
++        auto candidate = CreateGrpcChannel();
++        if (candidate && candidate->WaitForConnected(
++              std::chrono::system_clock::now() + std::chrono::milliseconds(20))) {
++          packet_stream_channel = std::move(candidate);
++          return packet_stream_channel;
++        }
++        std::this_thread::sleep_for(std::chrono::milliseconds(10));
++      } while (std::chrono::steady_clock::now() < until);
++    } else {
++      std::this_thread::sleep_for(std::chrono::seconds(second));
++    }
+   }
+
+   BtsLogError("Unable to get a packet stream channel.");
+diff --git a/target/arm/hvf.c b/target/arm/hvf.c
+index 8ca26b63c..bb47acbac 100644
+--- a/target/arm/hvf.c
++++ b/target/arm/hvf.c
+@@ -14,6 +14,7 @@
+ #include "qemu-common.h"
+
+ #include <Hypervisor/Hypervisor.h>
++#include <sys/mman.h>
+ #include <mach/mach_time.h>
+
+ #include "esr.h"
+@@ -239,6 +240,8 @@ struct mac_slot {
+     uint64_t size;
+     uint64_t gpa_start;
+     uint64_t gva;
++    hv_memory_flags_t flags;
++    bool modified_mapping;
+     void* hva;
+ };
+
+@@ -320,6 +323,35 @@ hvf_slot* hvf_next_free_slot() {
+     return mem;
+ }
+
++// Rebind the main RAM region while the snapshot loader has all vCPUs stopped.
++// QEMU devices keep their HVA pointers. HVF gets the new private VM object
++// explicitly, including any RAM slots split by the machine memory layout.
++bool droidfork_hvf_map_private(void *host, size_t bytes, int fd) {
++    uintptr_t first = (uintptr_t)host;
++    uintptr_t end = first + bytes;
++    bool remap[HVF_MAX_SLOTS] = { false };
++    pthread_rwlock_wrlock(&mem_lock);
++    for (int i = 0; i < HVF_MAX_SLOTS; ++i) {
++        struct mac_slot *s = &mac_slots[i];
++        uintptr_t addr = (uintptr_t)s->hva;
++        if (!s->present || addr >= end || addr + s->size <= first) continue;
++        if (addr < first || addr + s->size > end || s->modified_mapping) {
++            pthread_rwlock_unlock(&mem_lock);
++            return false;
++        }
++        remap[i] = true;
++    }
++    for (int i = 0; i < HVF_MAX_SLOTS; ++i)
++        if (remap[i]) assert_hvf_ok(hv_vm_unmap(mac_slots[i].gpa_start, mac_slots[i].size));
++    void *result = mmap(host, bytes, PROT_READ | PROT_WRITE,
++                        MAP_PRIVATE | MAP_FIXED, fd, 16384);
++    for (int i = 0; i < HVF_MAX_SLOTS; ++i)
++        if (remap[i]) assert_hvf_ok(hv_vm_map(mac_slots[i].hva, mac_slots[i].gpa_start,
++                mac_slots[i].size, mac_slots[i].flags));
++    pthread_rwlock_unlock(&mem_lock);
++    return result == host;
++}
++
+ int __hvf_set_memory(hvf_slot *slot);
+ int __hvf_set_memory_with_flags_locked(hvf_slot *slot, hv_memory_flags_t flags);
+
+@@ -415,9 +447,19 @@ int hvf_unmap_safe(uint64_t gpa, uint64_t size) {
+     return res;
+ }
+
++// A range with later sub-slot changes cannot be recreated from its initial flags.
++static void mark_modified_slots(uint64_t gpa, uint64_t size) {
++    for (int i = 0; i < HVF_MAX_SLOTS; ++i) {
++        struct mac_slot *s = &mac_slots[i];
++        if (s->present && gpa < s->gpa_start + s->size && s->gpa_start < gpa + size)
++            s->modified_mapping = true;
++    }
++}
++
+ int hvf_protect_safe(uint64_t gpa, uint64_t size, uint64_t flags) {
+     pthread_rwlock_wrlock(&mem_lock);
+     int res = hv_vm_protect(gpa, size, flags);
++    if (res == HV_SUCCESS) mark_modified_slots(gpa, size);
+     pthread_rwlock_unlock(&mem_lock);
+     return res;
+ }
+@@ -427,6 +469,7 @@ int hvf_remap_safe(void* hva, uint64_t gpa, uint64_t size, uint64_t flags) {
+     int res = hv_vm_unmap(gpa, size);
+     check_hvf_ok(res);
+     res = hv_vm_map(hva, gpa, size, flags);
++    if (res == HV_SUCCESS) mark_modified_slots(gpa, size);
+     check_hvf_ok(res);
+     pthread_rwlock_unlock(&mem_lock);
+     return res;
+@@ -485,6 +528,8 @@ int __hvf_set_memory_with_flags_locked(hvf_slot *slot, hv_memory_flags_t flags)
+     macslot->gpa_start = slot->start;
+     macslot->size = slot->size;
+     macslot->hva = slot->mem;
++    macslot->flags = flags;
++    macslot->modified_mapping = false;
+     DPRINTF("%s: hv_vm_map for hva 0x%llx gpa [0x%llx 0x%llx]\n", __func__,
+             (unsigned long long)(slot->mem),
+             (unsigned long long)macslot->gpa_start,

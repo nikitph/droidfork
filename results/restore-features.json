@@ -1,0 +1,104 @@
+{
+  "SnapshotAdb": {
+    "checkpoint": "d835aa8ac4694031a3a53597dda229c5",
+    "forks": [
+      {
+        "n": 1,
+        "outcomes": [
+          {
+            "alternate_reward": 0.0,
+            "chosen_number": "2025550137",
+            "judge_s": 2.6629829998128116,
+            "reward": 1.0
+          }
+        ],
+        "ready_s": 6.736345832934603,
+        "taps": [
+          {
+            "idle": true,
+            "label": "Phone",
+            "pixels": "34bbcd17ffe80c761330072f64f13c4605f415e0773d7dad6594ef507cf3b60d",
+            "seconds": 1.010398583021015
+          }
+        ],
+        "total_s": 7.74711775011383
+      },
+      {
+        "n": 1,
+        "outcomes": [
+          {
+            "alternate_reward": 0.0,
+            "chosen_number": "2025550137",
+            "judge_s": 3.068089250009507,
+            "reward": 1.0
+          }
+        ],
+        "ready_s": 4.2932959999889135,
+        "taps": [
+          {
+            "idle": true,
+            "label": "Phone",
+            "pixels": "34bbcd17ffe80c761330072f64f13c4605f415e0773d7dad6594ef507cf3b60d",
+            "seconds": 0.9275120829697698
+          }
+        ],
+        "total_s": 5.221146041061729
+      }
+    ],
+    "parked": [],
+    "rewinds": [
+      {
+        "ready_s": 2.3368748328648508,
+        "tap": {
+          "idle": true,
+          "label": "Phone",
+          "pixels": "efafff255fb61a681d7d3a6e320272a1471bd3222ee6de8f3c478d159c2c3cff",
+          "seconds": 1.1084899581037462
+        },
+        "total_s": 3.4454177080187947
+      },
+      {
+        "ready_s": 1.8465239577926695,
+        "tap": {
+          "idle": true,
+          "label": "Phone",
+          "pixels": "ff9296e57e8d8c15b245a334b33002457ef61a8ba8599c2c00ddcbd4bfc77088",
+          "seconds": 1.0688038330990821
+        },
+        "total_s": 2.915385166881606
+      },
+      {
+        "ready_s": 1.5708329160697758,
+        "tap": {
+          "idle": true,
+          "label": "Phone",
+          "pixels": "d4541008df71457f8678529f2a15abb573b503940f839766c63d4e57a80ded87",
+          "seconds": 1.2913662500213832
+        },
+        "total_s": 2.8622452500276268
+      }
+    ],
+    "warm_taps": [
+      {
+        "idle": true,
+        "label": "Phone",
+        "pixels": "efafff255fb61a681d7d3a6e320272a1471bd3222ee6de8f3c478d159c2c3cff",
+        "seconds": 1.1028944998979568
+      },
+      {
+        "idle": true,
+        "label": "Northline Studio",
+        "pixels": "67158386a6d978ce8e0baa27ac61d998ac0849ed83f99911612ad28b41f7f52a",
+        "seconds": 1.0820964998565614
+      }
+    ]
+  },
+  "OnDemandSnapshotLoad": {
+    "checkpoint": "4eebb3da18224221b4af4d716f3b0c0b",
+    "created_with_feature": true,
+    "requested_children": 1,
+    "ready_children": 0,
+    "readiness_deadline_s": 150,
+    "result": "Android failed readiness; no action or reward"
+  }
+}

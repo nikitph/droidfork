@@ -1,0 +1,213 @@
+[
+  {
+    "mode": "launch",
+    "total_s": 4.9130975001025945,
+    "events": [
+      {
+        "operation": "clone private disks",
+        "start_s": 0.0005306671373546124,
+        "end_s": 0.008964000036939979
+      },
+      {
+        "operation": "spawn emulator",
+        "start_s": 0.009627999970689416,
+        "end_s": 0.012021833099424839
+      },
+      {
+        "operation": "shell getprop sys.boot_completed",
+        "start_s": 0.012143083149567246,
+        "end_s": 3.0300465000327677
+      },
+      {
+        "operation": "shell getprop sys.boot_completed",
+        "start_s": 3.186172417132184,
+        "end_s": 4.818528500152752
+      },
+      {
+        "operation": "emu avd snapshot get",
+        "start_s": 4.81856633303687,
+        "end_s": 4.838486917084083
+      },
+      {
+        "operation": "shell getprop debug.droidfork.node",
+        "start_s": 4.83855383307673,
+        "end_s": 4.87042195815593
+      },
+      {
+        "operation": "shell pm path com.google.android.contacts",
+        "start_s": 4.870476667070761,
+        "end_s": 4.91295541706495
+      }
+    ]
+  },
+  {
+    "mode": "rewind",
+    "total_s": 1.688524124911055,
+    "events": [
+      {
+        "operation": "emu avd snapshot load df_460c46bc219d41db",
+        "start_s": 0.0007414580322802067,
+        "end_s": 1.2928034579381347
+      },
+      {
+        "operation": "shell getprop sys.boot_completed",
+        "start_s": 1.2928820000961423,
+        "end_s": 1.6011230000294745
+      },
+      {
+        "operation": "emu avd snapshot get",
+        "start_s": 1.6011511669494212,
+        "end_s": 1.6186579170171171
+      },
+      {
+        "operation": "shell getprop debug.droidfork.node",
+        "start_s": 1.6187008749693632,
+        "end_s": 1.6467644579242915
+      },
+      {
+        "operation": "shell pm path com.google.android.contacts",
+        "start_s": 1.6468049169052392,
+        "end_s": 1.6883154581300914
+      }
+    ]
+  },
+  {
+    "mode": "launch",
+    "total_s": 2.9145541249308735,
+    "events": [
+      {
+        "operation": "clone private disks",
+        "start_s": 0.0005127079784870148,
+        "end_s": 0.005749457981437445
+      },
+      {
+        "operation": "spawn emulator",
+        "start_s": 0.00629170797765255,
+        "end_s": 0.008893915917724371
+      },
+      {
+        "operation": "shell getprop sys.boot_completed",
+        "start_s": 0.008987083099782467,
+        "end_s": 2.7927604159340262
+      },
+      {
+        "operation": "emu avd snapshot get",
+        "start_s": 2.792779624927789,
+        "end_s": 2.8104969998821616
+      },
+      {
+        "operation": "shell getprop debug.droidfork.node",
+        "start_s": 2.810528374975547,
+        "end_s": 2.8554166660178453
+      },
+      {
+        "operation": "shell pm path com.google.android.contacts",
+        "start_s": 2.855445208027959,
+        "end_s": 2.9143894580192864
+      }
+    ]
+  },
+  {
+    "mode": "rewind",
+    "total_s": 1.6820929578971118,
+    "events": [
+      {
+        "operation": "emu avd snapshot load df_460c46bc219d41db",
+        "start_s": 0.0007934998720884323,
+        "end_s": 1.3142733748536557
+      },
+      {
+        "operation": "shell getprop sys.boot_completed",
+        "start_s": 1.314322124933824,
+        "end_s": 1.5881829580757767
+      },
+      {
+        "operation": "emu avd snapshot get",
+        "start_s": 1.5882023328449577,
+        "end_s": 1.6054330000188202
+      },
+      {
+        "operation": "shell getprop debug.droidfork.node",
+        "start_s": 1.605459916871041,
+        "end_s": 1.6445359168574214
+      },
+      {
+        "operation": "shell pm path com.google.android.contacts",
+        "start_s": 1.6445650418754667,
+        "end_s": 1.6819777500350028
+      }
+    ]
+  },
+  {
+    "mode": "launch",
+    "total_s": 3.920427542179823,
+    "events": [
+      {
+        "operation": "clone private disks",
+        "start_s": 0.000683917198330164,
+        "end_s": 0.006087457993999124
+      },
+      {
+        "operation": "spawn emulator",
+        "start_s": 0.0069624581374228,
+        "end_s": 0.009437792003154755
+      },
+      {
+        "operation": "shell getprop sys.boot_completed",
+        "start_s": 0.009537500096485019,
+        "end_s": 2.9628828749991953
+      },
+      {
+        "operation": "shell getprop sys.boot_completed",
+        "start_s": 3.1230072921607643,
+        "end_s": 3.8307203331496567
+      },
+      {
+        "operation": "emu avd snapshot get",
+        "start_s": 3.830734917195514,
+        "end_s": 3.851483042119071
+      },
+      {
+        "operation": "shell getprop debug.droidfork.node",
+        "start_s": 3.8515212920028716,
+        "end_s": 3.8788349581882358
+      },
+      {
+        "operation": "shell pm path com.google.android.contacts",
+        "start_s": 3.8788655831012875,
+        "end_s": 3.9202967500314116
+      }
+    ]
+  },
+  {
+    "mode": "rewind",
+    "total_s": 1.6913042089436203,
+    "events": [
+      {
+        "operation": "emu avd snapshot load df_460c46bc219d41db",
+        "start_s": 0.0008049588650465012,
+        "end_s": 1.3138079170603305
+      },
+      {
+        "operation": "shell getprop sys.boot_completed",
+        "start_s": 1.3138883749488741,
+        "end_s": 1.5928259170614183
+      },
+      {
+        "operation": "emu avd snapshot get",
+        "start_s": 1.5928441248834133,
+        "end_s": 1.6112146249506623
+      },
+      {
+        "operation": "shell getprop debug.droidfork.node",
+        "start_s": 1.611249417066574,
+        "end_s": 1.6428834998514503
+      },
+      {
+        "operation": "shell pm path com.google.android.contacts",
+        "start_s": 1.6429180419072509,
+        "end_s": 1.6911882918793708
+      }
+    ]
+  }
+]

@@ -1,0 +1,144 @@
+{
+  "clock": "Native stage times are host log receipt times since spawn. Other *_s times are host monotonic seconds since before listener, clone and process creation. observer_us is guest elapsedRealtime since entering the request handler.",
+  "kernel": {
+    "sdk_compressed_bytes": 14474326,
+    "sdk_gzip_sha256": "a9dda2ae115395ea352bca2201294b4df0020a7f425cbfae879ee66a03a8f19f",
+    "expanded_bytes": 36219392,
+    "expanded_sha256": "3226eb09ec1d770c1d44e34493b95966c94d0312c0eb54f90acc893197c572a6",
+    "verified_identical_to_sdk_decompression": true
+  },
+  "binaries": {
+    "final-emulator": {
+      "qemu_sha256": "3d0e848d68a08389e8176ac3e90b0d0ecca6c9174db2a3da4c8f48b55651062f",
+      "renderer_sha256": "a0383041662648bf06cbfeb904c9213d9379f8cd9b595af624dccc2adbaa36d5"
+    },
+    "profile-emulator": {
+      "qemu_sha256": "bb2d6d0b3b20eb5cb3b426c0c59e8fd4b0fc024ffff1a7cf8014497984210f15",
+      "renderer_sha256": "71498bc0f17f63cf5955e3a5bfd7860315d3d858201146f50f9373ae31825948"
+    },
+    "twolevel-emulator": {
+      "qemu_sha256": "bb2d6d0b3b20eb5cb3b426c0c59e8fd4b0fc024ffff1a7cf8014497984210f15",
+      "renderer_sha256": "69d583ee844cfbeef325520a1f34d6706532a51359968af46f491f321e8ca941"
+    },
+    "fixed-adb-emulator": {
+      "qemu_sha256": "2e8449489743a4f85c0f8cb0d92eff9eba0f8608fd781a69d7056d86135b7f3e",
+      "renderer_sha256": "69d583ee844cfbeef325520a1f34d6706532a51359968af46f491f321e8ca941"
+    }
+  },
+  "original_3s49": {
+    "pid": 35492,
+    "node": "849ebb60656c48639a3bb2daf3f8c623",
+    "host": {
+      "spawn_s": 0.010705542052164674,
+      "connected_s": 1.0834649589378387,
+      "xml_s": 2.475518292048946,
+      "png_s": 3.483105459017679,
+      "verified_s": 3.4903792499098927
+    },
+    "process_output_from_spawn": [
+      "0.300164 INFO         | Increasing RAM size to 2560MB",
+      "0.423955 INFO         | Initializing gfxstream backend",
+      "0.666172 INFO         | startOpenglesRendererImpl: gpu info",
+      "0.677633 INFO         | Selecting Vulkan device: SwiftShader Device (LLVM 10.0.0), Version: 1.3.0",
+      "0.677647 INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation",
+      "0.912989 INFO         | Loading snapshot 'df_849ebb60656c4863'...",
+      "0.949941 DroidFork HVF: mapped 163840 main RAM pages privately",
+      "0.950894 DroidFork RAM: 1 pages in 1 reads, 15.0 ms",
+      "1.047176 INFO         | Successfully loaded snapshot 'df_849ebb60656c4863' using 134 ms"
+    ]
+  },
+  "profiled_original_style": {
+    "pid": 36982,
+    "node": "7b55a9d5bfb048eba814c55a6ecfb972",
+    "host": {
+      "spawn_s": 0.012023417046293616,
+      "connected_s": 1.120283958967775,
+      "xml_s": 2.818503208924085,
+      "png_s": 3.4331310419365764,
+      "verified_s": 3.43802845897153
+    },
+    "process_output_from_spawn": [
+      "0.327830 INFO         | Increasing RAM size to 2560MB",
+      "0.437959 INFO         | Initializing gfxstream backend",
+      "0.697548 INFO         | startOpenglesRendererImpl: gpu info",
+      "0.709095 INFO         | Selecting Vulkan device: SwiftShader Device (LLVM 10.0.0), Version: 1.3.0",
+      "0.709137 INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation",
+      "0.946215 INFO         | Loading snapshot 'df_7b55a9d5bfb048eb'...",
+      "0.990123 DroidFork HVF: mapped 163840 main RAM pages privately",
+      "0.991497 DroidFork RAM: 1 pages in 1 reads, 20.4 ms",
+      "1.093462 INFO         | Successfully loaded snapshot 'df_7b55a9d5bfb048eb' using 147 ms"
+    ]
+  },
+  "optimized_two_cpu": {
+    "pid": 40082,
+    "node": "bb21422d58b64603be3c18febbfec6f2",
+    "host": {
+      "spawn_s": 0.012072250014171004,
+      "connected_s": 0.5052074580453336,
+      "xml_s": 1.5443009580485523,
+      "verified_s": 1.5700504998676479
+    },
+    "process_output_from_spawn": [
+      "0.053874 DFstage main",
+      "0.054429 DFstage crash_ready",
+      "0.054755 DFstage early_setup",
+      "0.054768 DFstage gpu_query_started",
+      "0.054821 DFstage agents_ready",
+      "0.114665 INFO         | Increasing RAM size to 2560MB",
+      "0.118177 DFstage accel",
+      "0.121733 DFstage graphics_start",
+      "0.221426 INFO         | Initializing gfxstream backend",
+      "0.226692 DFstage renderer_dlopen",
+      "0.226759 DFstage renderer_library",
+      "0.226770 INFO         | startOpenglesRendererImpl: gpu info",
+      "0.238257 INFO         | Selecting Vulkan device: SwiftShader Device (LLVM 10.0.0), Version: 1.3.0",
+      "0.238302 INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation",
+      "0.340412 DFstage reporting_start",
+      "0.340462 DFstage metrics_ready",
+      "0.340469 DFstage crash_info",
+      "0.340473 DFstage reporting_done",
+      "0.340481 INFO         | Loading snapshot 'df_bb21422d58b64603'...",
+      "0.383122 DroidFork HVF: mapped 163840 main RAM pages privately",
+      "0.383929 DroidFork RAM: 1 pages in 1 reads, 18.9 ms",
+      "0.484650 INFO         | Successfully loaded snapshot 'df_bb21422d58b64603' using 145 ms"
+    ]
+  },
+  "fixed_adb_hardware": {
+    "pid": 45723,
+    "node": "bfceddac324947989f9c1ce3dc8269c0",
+    "host": {
+      "spawn_s": 0.01375637506134808,
+      "connected_s": 0.4679912501014769,
+      "xml_s": 0.879422000143677,
+      "verified_s": 1.144844625145197
+    },
+    "process_output_from_spawn": [
+      "0.055164 DFstage main",
+      "0.067109 DFstage crash_ready",
+      "0.067245 DFstage early_setup",
+      "0.067259 DFstage gpu_query_started",
+      "0.067301 DFstage agents_ready",
+      "0.137418 INFO         | Increasing RAM size to 2560MB",
+      "0.141132 DFstage accel",
+      "0.144605 DFstage graphics_start",
+      "0.168879 DFstage adb_selected",
+      "0.169300 INFO         | Initializing gfxstream backend",
+      "0.174484 DFstage renderer_dlopen",
+      "0.174518 DFstage renderer_library",
+      "0.174527 INFO         | startOpenglesRendererImpl: gpu info",
+      "0.185568 INFO         | Selecting Vulkan device: Apple M1 Pro, Version: 1.1.323",
+      "0.185584 INFO         | Using Vulkan externalMemoryMode: Metal for VkEmulation",
+      "0.246923 DFstage board_init",
+      "0.263916 DFstage board_notifiers",
+      "0.279517 DFstage initial_reset",
+      "0.293292 DFstage reporting_start",
+      "0.293354 DFstage metrics_ready",
+      "0.293403 DFstage crash_info",
+      "0.293441 DFstage reporting_done",
+      "0.293456 INFO         | Loading snapshot 'df_bfceddac32494798'...",
+      "0.338256 DroidFork HVF: mapped 163840 main RAM pages privately",
+      "0.339164 DroidFork RAM: 1 pages in 1 reads, 19.4 ms",
+      "0.450593 INFO         | Successfully loaded snapshot 'df_bfceddac32494798' using 157 ms"
+    ]
+  }
+}

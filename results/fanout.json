@@ -1,0 +1,294 @@
+{
+  "checkpoint": "14a9031da54a4fffac9e508a0a5beac4",
+  "source_parent_running": false,
+  "trials": [
+    {
+      "all_acted_s": 6.5417332500219345,
+      "emulators": [
+        {
+          "physical_footprint_bytes": 5355853344,
+          "pid": 81614,
+          "rss_bytes": 5413584896
+        }
+      ],
+      "n": 1,
+      "observations": [
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "28168da8ed114ce8b0137711c8da115362b9abb402c11a4e1b5ed989578cdb30",
+          "xml": "9d11af3ff72d1b8bf0e64a4b84ea4ec8962d73acf3c38aa5621030256ea4dc15"
+        }
+      ],
+      "ready_s": 3.7587990420870483,
+      "round": 0
+    },
+    {
+      "all_acted_s": 7.511997957946733,
+      "emulators": [
+        {
+          "physical_footprint_bytes": 5293135392,
+          "pid": 81676,
+          "rss_bytes": 2528739328
+        },
+        {
+          "physical_footprint_bytes": 5382624776,
+          "pid": 81677,
+          "rss_bytes": 3105783808
+        }
+      ],
+      "n": 2,
+      "observations": [
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "73841fe5c1a9c8d7b8798039a5095a2c89ea8f9746bb58c73f1e49625f2936fb",
+          "xml": "7de491f07ecd22df6e25b5a8e6c5a8b697d5ef3c5e2ec25c8cedcf3ca5388ece"
+        },
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "73841fe5c1a9c8d7b8798039a5095a2c89ea8f9746bb58c73f1e49625f2936fb",
+          "xml": "7de491f07ecd22df6e25b5a8e6c5a8b697d5ef3c5e2ec25c8cedcf3ca5388ece"
+        }
+      ],
+      "ready_s": 4.717418499989435,
+      "round": 0
+    },
+    {
+      "all_acted_s": 15.363500958075747,
+      "emulators": [
+        {
+          "physical_footprint_bytes": 5430269448,
+          "pid": 81756,
+          "rss_bytes": 1424670720
+        },
+        {
+          "physical_footprint_bytes": 5373056544,
+          "pid": 81757,
+          "rss_bytes": 1428881408
+        },
+        {
+          "physical_footprint_bytes": 5374301728,
+          "pid": 81758,
+          "rss_bytes": 1405681664
+        }
+      ],
+      "n": 3,
+      "observations": [
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "99b578bec20fb8cb97d83290bb63d1dc8e599ecc5c9700e22da2bcd3ce9e561e",
+          "xml": "cb266cbdd4a2c146737f1e940ef9e470f8ba6fa79b37c6e5fc9fe7056dc72ac3"
+        },
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "99b578bec20fb8cb97d83290bb63d1dc8e599ecc5c9700e22da2bcd3ce9e561e",
+          "xml": "2c8b1d70d0dd67e4e7f12be379fceac5f4745765f7ab35b1dcb119b2ae36f7aa"
+        },
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "73841fe5c1a9c8d7b8798039a5095a2c89ea8f9746bb58c73f1e49625f2936fb",
+          "xml": "7de491f07ecd22df6e25b5a8e6c5a8b697d5ef3c5e2ec25c8cedcf3ca5388ece"
+        }
+      ],
+      "ready_s": 5.655922541161999,
+      "round": 0
+    },
+    {
+      "all_acted_s": 7.6410017078742385,
+      "emulators": [
+        {
+          "physical_footprint_bytes": 5310043680,
+          "pid": 81916,
+          "rss_bytes": 2593374208
+        },
+        {
+          "physical_footprint_bytes": 5377758728,
+          "pid": 81914,
+          "rss_bytes": 3125526528
+        }
+      ],
+      "n": 2,
+      "observations": [
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "73841fe5c1a9c8d7b8798039a5095a2c89ea8f9746bb58c73f1e49625f2936fb",
+          "xml": "9dafc6d35e51d985d2c5f403acda94732ba5b9c07874e54776aee23f8174ee65"
+        },
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "2c79c9636ead606ee1edc35918dc31002c2f9a3affef3654b216e201a533b420",
+          "xml": "9dafc6d35e51d985d2c5f403acda94732ba5b9c07874e54776aee23f8174ee65"
+        }
+      ],
+      "ready_s": 4.5146969999186695,
+      "round": 1
+    },
+    {
+      "all_acted_s": 12.916257375152782,
+      "emulators": [
+        {
+          "physical_footprint_bytes": 5430515232,
+          "pid": 81997,
+          "rss_bytes": 1483816960
+        },
+        {
+          "physical_footprint_bytes": 5298034160,
+          "pid": 81998,
+          "rss_bytes": 1392361472
+        },
+        {
+          "physical_footprint_bytes": 5312501256,
+          "pid": 81995,
+          "rss_bytes": 1258012672
+        }
+      ],
+      "n": 3,
+      "observations": [
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "21a927fae8094c690d298576161ce95024526f8384a1f4f8ff54de1b98eb3fe7",
+          "xml": "7de491f07ecd22df6e25b5a8e6c5a8b697d5ef3c5e2ec25c8cedcf3ca5388ece"
+        },
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "100fc9d6399501f3c0608e88baa161c88948448b20deec325f1788ceb49481bb",
+          "xml": "cb266cbdd4a2c146737f1e940ef9e470f8ba6fa79b37c6e5fc9fe7056dc72ac3"
+        },
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "2c79c9636ead606ee1edc35918dc31002c2f9a3affef3654b216e201a533b420",
+          "xml": "7de491f07ecd22df6e25b5a8e6c5a8b697d5ef3c5e2ec25c8cedcf3ca5388ece"
+        }
+      ],
+      "ready_s": 5.524065417004749,
+      "round": 1
+    },
+    {
+      "all_acted_s": 6.073711208067834,
+      "emulators": [
+        {
+          "physical_footprint_bytes": 5333800480,
+          "pid": 82137,
+          "rss_bytes": 5391597568
+        }
+      ],
+      "n": 1,
+      "observations": [
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "2c79c9636ead606ee1edc35918dc31002c2f9a3affef3654b216e201a533b420",
+          "xml": "7de491f07ecd22df6e25b5a8e6c5a8b697d5ef3c5e2ec25c8cedcf3ca5388ece"
+        }
+      ],
+      "ready_s": 3.772863124962896,
+      "round": 1
+    },
+    {
+      "all_acted_s": 15.057636083103716,
+      "emulators": [
+        {
+          "physical_footprint_bytes": 5279667720,
+          "pid": 82188,
+          "rss_bytes": 1223376896
+        },
+        {
+          "physical_footprint_bytes": 5388457480,
+          "pid": 82186,
+          "rss_bytes": 1173618688
+        },
+        {
+          "physical_footprint_bytes": 5272426016,
+          "pid": 82187,
+          "rss_bytes": 1220542464
+        }
+      ],
+      "n": 3,
+      "observations": [
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "21e15ecc9fa115d1b0b226c9c33ea07e02a58b789d73bc10e79e071203d8a858",
+          "xml": "0beca99e2215ebf6f3b71836eea3e7d5ca36468a0cacb634fb6573805efd7559"
+        },
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "21e15ecc9fa115d1b0b226c9c33ea07e02a58b789d73bc10e79e071203d8a858",
+          "xml": "0beca99e2215ebf6f3b71836eea3e7d5ca36468a0cacb634fb6573805efd7559"
+        },
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "f4467dc2349d66e6897c51bb64181a79ba7c11e4cc51229b7c2fd61fd4c66043",
+          "xml": "0beca99e2215ebf6f3b71836eea3e7d5ca36468a0cacb634fb6573805efd7559"
+        }
+      ],
+      "ready_s": 5.898168958025053,
+      "round": 2
+    },
+    {
+      "all_acted_s": 6.090773707954213,
+      "emulators": [
+        {
+          "physical_footprint_bytes": 5312091632,
+          "pid": 82369,
+          "rss_bytes": 5369921536
+        }
+      ],
+      "n": 1,
+      "observations": [
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "34c144e6edda745366f945a5ba14b248e591018b0e791565d5c300207f6185ab",
+          "xml": "f1329bec016713a0a86fcddfff7159f24d8722ddd8b87ce0a786c01c6d11a30f"
+        }
+      ],
+      "ready_s": 3.8239966249093413,
+      "round": 2
+    },
+    {
+      "all_acted_s": 7.951388832880184,
+      "emulators": [
+        {
+          "physical_footprint_bytes": 5306177032,
+          "pid": 82406,
+          "rss_bytes": 2469101568
+        },
+        {
+          "physical_footprint_bytes": 5379397128,
+          "pid": 82407,
+          "rss_bytes": 2674491392
+        }
+      ],
+      "n": 2,
+      "observations": [
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "a25fb516d2bef7250d4fdd629b4bfc268f2dd7e58da3fe9971da00675cc9c98c",
+          "xml": "0beca99e2215ebf6f3b71836eea3e7d5ca36468a0cacb634fb6573805efd7559"
+        },
+        {
+          "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+          "app_tree": "16396eb8fc96996b3e1796dc46d6f0e0205f0e6907a8cc869e8820b13a047b65",
+          "pixels": "34c144e6edda745366f945a5ba14b248e591018b0e791565d5c300207f6185ab",
+          "xml": "f1329bec016713a0a86fcddfff7159f24d8722ddd8b87ce0a786c01c6d11a30f"
+        }
+      ],
+      "ready_s": 4.694869332946837,
+      "round": 2
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "host_os": "27.0",
+  "host_chip": "Apple M1 Pro",
+  "host_ram_bytes": 17179869184,
+  "host_cores": 8,
+  "virtualization": "accel:\n0\nHypervisor.Framework OS X Version 27.0\naccel",
+  "emulator": "Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)",
+  "adb": [
+    "Android Debug Bridge version 1.0.41",
+    "Version 37.0.1-15733141"
+  ],
+  "orbstack": "Version: 2.2.4 (2020400)",
+  "emulator_guest": {
+    "hw.ramSize": "2560",
+    "hw.cpu.ncore": "2",
+    "hw.lcd.width": "480",
+    "hw.lcd.height": "854",
+    "hw.lcd.density": "200"
+  },
+  "base": {
+    "fingerprint": "google/sdk_gphone64_arm64/emu64a:15/AE3A.240806.043/12960925:userdebug/dev-keys",
+    "node": "594bce1fe2d74f1384b995f6c618fe30"
+  },
+  "orbstack_device_probe": {
+    "command": "docker run --rm --device /dev/kvm alpine:3.20 uname -m",
+    "result": "error gathering device information while adding custom device \"/dev/kvm\": no such file or directory"
+  }
+}

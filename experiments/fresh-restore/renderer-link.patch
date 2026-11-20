@@ -1,0 +1,13 @@
+diff --git a/host/CMakeLists.txt b/host/CMakeLists.txt
+index 6319799..67a083b 100644
+--- a/host/CMakeLists.txt
++++ b/host/CMakeLists.txt
+@@ -192,7 +192,7 @@ target_link_libraries(
+ if (APPLE)
+     set_target_properties(gfxstream_backend
+         PROPERTIES
+-        LINK_FLAGS  "-undefined dynamic_lookup -flat_namespace")
++        LINK_FLAGS  "-undefined dynamic_lookup")
+ endif()
+
+ if (LINUX)

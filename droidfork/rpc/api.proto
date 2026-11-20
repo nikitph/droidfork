@@ -1,0 +1,30 @@
+syntax = "proto3";
+package droidfork;
+service Environments {
+  rpc Info(Empty) returns (InfoReply);
+  rpc Reset(ResetRequest) returns (Device);
+  rpc Snapshot(SnapshotRequest) returns (SnapshotId);
+  rpc Fork(ForkRequest) returns (Devices);
+  rpc Step(StepRequest) returns (Observation);
+  rpc Observe(Device) returns (Observation);
+  rpc Judge(JudgeRequest) returns (Reward);
+  rpc Release(Devices) returns (Empty);
+}
+message Empty {}
+message InfoReply { string base = 1; string fingerprint = 2; uint32 capacity = 3; }
+message Device { string id = 1; }
+message Devices { repeated Device children = 1; }
+message SnapshotId { string id = 1; }
+message ResetRequest { string snapshot = 1; string reuse = 2; bool cold_boot = 3; }
+message SnapshotRequest { string device = 1; string name = 2; bool app = 3; }
+message ForkRequest { string snapshot = 1; uint32 n = 2; }
+message Point { int32 x = 1; int32 y = 2; }
+message Swipe { Point start = 1; Point end = 2; }
+message StepRequest {
+ string device = 1;
+ oneof action { string tap_label = 2; Point tap = 3; string type_text = 4; string launch = 5;
+                string key = 6; Swipe swipe = 7; Empty wait = 8; }
+}
+message Observation { bytes png = 1; string xml = 2; string activity = 3; bool idle = 4; }
+message JudgeRequest { string device = 1; string name = 2; string number = 3; }
+message Reward { double value = 1; }

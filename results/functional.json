@@ -1,0 +1,86 @@
+{
+  "app_manifest_sha256": "01daae1ce38a145c7987ff087ee48efc027f9d1b149f8000eea18c41177647ce",
+  "app_restore_s": 15.939948209095746,
+  "app_restored": {
+    "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+    "app_tree": "3bfe8e5d0bb69ad7bf9f930b676fe8451c9d04824826996466eb34aed5d53e5f",
+    "pixels": "7aa799f1e572a2e0b2bfc2e38cefd199c87e02b22d74ffd663c2a7cb6ee35d39",
+    "xml": "c1547563fa8fe41f7a4ee13d43ad0881b55d0aa8da45067813f3633710786bac"
+  },
+  "base": "594bce1fe2d74f1384b995f6c618fe30",
+  "children": [
+    {
+      "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+      "app_tree": "3bfe8e5d0bb69ad7bf9f930b676fe8451c9d04824826996466eb34aed5d53e5f",
+      "pixels": "d929fcb84238172e784fc92e7bb1183b7be41cc8d57d99b60ff6e6aa6d12ecbc",
+      "xml": "a28802330b72da1976d2cad5b9dfd005b0066b5288333c1c1644f86f5b6e5bc6"
+    },
+    {
+      "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+      "app_tree": "3bfe8e5d0bb69ad7bf9f930b676fe8451c9d04824826996466eb34aed5d53e5f",
+      "pixels": "d929fcb84238172e784fc92e7bb1183b7be41cc8d57d99b60ff6e6aa6d12ecbc",
+      "xml": "ae21bc07370b633b23d2fdcad8be41eb2206dc95154fcf361d0dfe02859524b6"
+    }
+  ],
+  "fork_2_s": 4.644777333829552,
+  "manifest_reused": true,
+  "nested_rows": [
+    {
+      "name": "Mira Shah",
+      "number": "2025550184"
+    }
+  ],
+  "node": "ddb89544556f444fada785ae72586e51",
+  "outcomes": [
+    {
+      "chosen_number": "2025550137",
+      "reward": 1.0,
+      "rows": [
+        {
+          "name": "Mira Shah",
+          "number": "2025550137"
+        }
+      ]
+    },
+    {
+      "chosen_number": "2025550184",
+      "reward": 0.0,
+      "rows": [
+        {
+          "name": "Mira Shah",
+          "number": "2025550184"
+        }
+      ]
+    }
+  ],
+  "parent": {
+    "activity": "com.google.android.contacts/com.google.android.apps.contacts.editor.LegacyContactEditorActivity",
+    "app_tree": "3bfe8e5d0bb69ad7bf9f930b676fe8451c9d04824826996466eb34aed5d53e5f",
+    "pixels": "0c054df5593a1ec7eaf961abf4b84a09d198bf451e136fe154bea5932e454e90",
+    "xml": "d8525733461dc87e86a9f6346048515f397e8e2ac936e1ad6c0b0703ef07ccf6"
+  },
+  "parent_rows": [],
+  "restored_fields": [
+    {
+      "focused": false,
+      "label": "First name",
+      "value": "Mira"
+    },
+    {
+      "focused": false,
+      "label": "Last name",
+      "value": "Shah"
+    },
+    {
+      "focused": true,
+      "label": "Company",
+      "value": "Northline Studio"
+    },
+    {
+      "focused": false,
+      "label": "Phone",
+      "value": ""
+    }
+  ],
+  "snapshot_s": 2.9070595409721136
+}

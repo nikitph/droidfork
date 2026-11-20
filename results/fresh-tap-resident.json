@@ -1,0 +1,64 @@
+[
+  {
+    "mode": "direct-map",
+    "node": "849ebb60656c48639a3bb2daf3f8c623",
+    "pid": 35589,
+    "log": ".lab/pool/logs/641d7dae176246019c8ec0b1f34205f2.log",
+    "spawn_s": 0.011356541886925697,
+    "connected_s": 1.5891335420310497,
+    "marker_s": 1.5907296668738127,
+    "xml_s": 3.0631262499373406,
+    "png_s": 3.4801578749902546,
+    "pixels_sha256": "8cc3d5ede35788c03c1ae5a3d8d577b643a8b920d8b26b0e1758dbb9fa78d81e",
+    "verified_s": 3.4981326670385897,
+    "native_log": [
+      "1.431366 DroidFork HVF: mapped 163840 main RAM pages privately",
+      "1.432749 DroidFork RAM: 1 pages in 1 reads, 410.9 ms",
+      "1.555558 INFO         | Successfully loaded snapshot 'df_849ebb60656c4863' using 557 ms"
+    ],
+    "child_save_verified": true,
+    "resident_source": true
+  },
+  {
+    "mode": "direct-map",
+    "node": "849ebb60656c48639a3bb2daf3f8c623",
+    "pid": 35627,
+    "log": ".lab/pool/logs/062817571f7f40079d239058fc510593.log",
+    "spawn_s": 0.011569750029593706,
+    "connected_s": 1.3385435838717967,
+    "marker_s": 1.339093792019412,
+    "xml_s": 3.0243899589404464,
+    "png_s": 3.4505977500230074,
+    "pixels_sha256": "4fd880bf05d842d71d230b7ca4473af15399853d764978f5bc0833d6f65822ac",
+    "verified_s": 3.4602419168222696,
+    "native_log": [
+      "1.184529 DroidFork HVF: mapped 163840 main RAM pages privately",
+      "1.186430 DroidFork RAM: 1 pages in 1 reads, 259.7 ms",
+      "1.307241 INFO         | Successfully loaded snapshot 'df_849ebb60656c4863' using 405 ms"
+    ],
+    "resident_source": true
+  },
+  {
+    "mode": "direct-map",
+    "node": "849ebb60656c48639a3bb2daf3f8c623",
+    "pid": 35659,
+    "log": ".lab/pool/logs/90730010aa9b4671a0b075a66a613cd6.log",
+    "spawn_s": 0.010312208207324147,
+    "connected_s": 1.4505412080325186,
+    "marker_s": 1.4613080420531332,
+    "xml_s": 2.6638867082074285,
+    "png_s": 3.4610605421476066,
+    "pixels_sha256": "4fd880bf05d842d71d230b7ca4473af15399853d764978f5bc0833d6f65822ac",
+    "verified_s": 3.4663685001432896,
+    "native_log": [
+      "1.288797 DroidFork HVF: mapped 163840 main RAM pages privately",
+      "1.291453 DroidFork RAM: 1 pages in 1 reads, 367.8 ms",
+      "1.428313 INFO         | Successfully loaded snapshot 'df_849ebb60656c4863' using 529 ms"
+    ],
+    "resident_source": true
+  },
+  {
+    "sealed_parent_empty": true,
+    "original_focus": "Northline Studio"
+  }
+]

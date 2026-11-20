@@ -1,0 +1,401 @@
+{
+  "checkpoint": "460c46bc219d41dbaa22a7d9917a2319",
+  "forks": [
+    {
+      "n": 1,
+      "outcomes": [
+        {
+          "alternate_reward": 0.0,
+          "chosen_number": "2025550137",
+          "judge_s": 2.8725854998920113,
+          "reward": 1.0
+        }
+      ],
+      "ready_s": 4.342072665924206,
+      "taps": [
+        {
+          "idle": true,
+          "label": "Phone",
+          "pixels": "1773095754a48483c444782f9c2ab24a29e28cb39dd05443761bc9dec7532e0b",
+          "seconds": 0.7594477911479771
+        }
+      ],
+      "total_s": 5.1018472500145435
+    },
+    {
+      "n": 2,
+      "outcomes": [
+        {
+          "alternate_reward": 0.0,
+          "chosen_number": "2025550137",
+          "judge_s": 3.8650492089800537,
+          "reward": 1.0
+        },
+        {
+          "alternate_reward": 1.0,
+          "chosen_number": "2025550184",
+          "judge_s": 4.500096499919891,
+          "reward": 0.0
+        }
+      ],
+      "ready_s": 4.536560292122886,
+      "taps": [
+        {
+          "idle": true,
+          "label": "Phone",
+          "pixels": "65f74191194eb254e92a0b6e675d7ff78785129df5f30523f8ef692aabafdb14",
+          "seconds": 1.9436358329840004
+        },
+        {
+          "idle": true,
+          "label": "Phone",
+          "pixels": "65f74191194eb254e92a0b6e675d7ff78785129df5f30523f8ef692aabafdb14",
+          "seconds": 1.8636484588496387
+        }
+      ],
+      "total_s": 6.480849458137527
+    },
+    {
+      "n": 1,
+      "outcomes": [
+        {
+          "alternate_reward": 0.0,
+          "chosen_number": "2025550137",
+          "judge_s": 2.7442160409409553,
+          "reward": 1.0
+        }
+      ],
+      "ready_s": 4.382591999834403,
+      "taps": [
+        {
+          "idle": true,
+          "label": "Phone",
+          "pixels": "1773095754a48483c444782f9c2ab24a29e28cb39dd05443761bc9dec7532e0b",
+          "seconds": 0.792389125097543
+        }
+      ],
+      "total_s": 5.175595583859831
+    },
+    {
+      "n": 2,
+      "outcomes": [
+        {
+          "alternate_reward": 0.0,
+          "chosen_number": "2025550137",
+          "judge_s": 6.829823167063296,
+          "reward": 1.0
+        },
+        {
+          "alternate_reward": 1.0,
+          "chosen_number": "2025550184",
+          "judge_s": 3.024972749873996,
+          "reward": 0.0
+        }
+      ],
+      "ready_s": 4.598404791904613,
+      "taps": [
+        {
+          "idle": true,
+          "label": "Phone",
+          "pixels": "55531c022b5ea855b3c95a1c4a220ecc70dcf547225e7d2346eeebfb887a5fa2",
+          "seconds": 1.5567136669997126
+        },
+        {
+          "idle": true,
+          "label": "Phone",
+          "pixels": "55531c022b5ea855b3c95a1c4a220ecc70dcf547225e7d2346eeebfb887a5fa2",
+          "seconds": 2.015437957830727
+        }
+      ],
+      "total_s": 6.616415082942694
+    },
+    {
+      "n": 1,
+      "outcomes": [
+        {
+          "alternate_reward": 0.0,
+          "chosen_number": "2025550137",
+          "judge_s": 2.415097416844219,
+          "reward": 1.0
+        }
+      ],
+      "ready_s": 4.172658333089203,
+      "taps": [
+        {
+          "idle": true,
+          "label": "Phone",
+          "pixels": "e19831ff33ec717274da247122f73318dc5936cf9b9318cc1a909301e665f22b",
+          "seconds": 0.7939244590234011
+        }
+      ],
+      "total_s": 4.966957041062415
+    },
+    {
+      "n": 2,
+      "outcomes": [
+        {
+          "alternate_reward": 0.0,
+          "chosen_number": "2025550137",
+          "judge_s": 3.4771624580025673,
+          "reward": 1.0
+        },
+        {
+          "alternate_reward": 1.0,
+          "chosen_number": "2025550184",
+          "judge_s": 3.353278207825497,
+          "reward": 0.0
+        }
+      ],
+      "ready_s": 4.756970416055992,
+      "taps": [
+        {
+          "idle": true,
+          "label": "Phone",
+          "pixels": "55531c022b5ea855b3c95a1c4a220ecc70dcf547225e7d2346eeebfb887a5fa2",
+          "seconds": 1.680807458003983
+        },
+        {
+          "idle": true,
+          "label": "Phone",
+          "pixels": "55531c022b5ea855b3c95a1c4a220ecc70dcf547225e7d2346eeebfb887a5fa2",
+          "seconds": 1.3219624168705195
+        }
+      ],
+      "total_s": 6.438309666002169
+    }
+  ],
+  "rewinds": [
+    {
+      "ready_s": 2.1319095420185477,
+      "tap": {
+        "idle": true,
+        "label": "Phone",
+        "pixels": "1773095754a48483c444782f9c2ab24a29e28cb39dd05443761bc9dec7532e0b",
+        "seconds": 0.6972897078376263
+      },
+      "total_s": 2.8292344170622528
+    },
+    {
+      "ready_s": 2.052049583988264,
+      "tap": {
+        "idle": true,
+        "label": "Phone",
+        "pixels": "1773095754a48483c444782f9c2ab24a29e28cb39dd05443761bc9dec7532e0b",
+        "seconds": 0.830356374848634
+      },
+      "total_s": 2.882448917021975
+    },
+    {
+      "ready_s": 2.336088125128299,
+      "tap": {
+        "idle": true,
+        "label": "Phone",
+        "pixels": "1773095754a48483c444782f9c2ab24a29e28cb39dd05443761bc9dec7532e0b",
+        "seconds": 0.6412536248099059
+      },
+      "total_s": 2.9773726251441985
+    },
+    {
+      "ready_s": 1.6600839169695973,
+      "tap": {
+        "idle": true,
+        "label": "Phone",
+        "pixels": "1773095754a48483c444782f9c2ab24a29e28cb39dd05443761bc9dec7532e0b",
+        "seconds": 0.6742772499565035
+      },
+      "total_s": 2.334399166982621
+    },
+    {
+      "ready_s": 1.7598987920209765,
+      "tap": {
+        "idle": true,
+        "label": "Phone",
+        "pixels": "1773095754a48483c444782f9c2ab24a29e28cb39dd05443761bc9dec7532e0b",
+        "seconds": 0.6420348749961704
+      },
+      "total_s": 2.4020052920095623
+    }
+  ],
+  "warm_taps": [
+    {
+      "idle": true,
+      "label": "Phone",
+      "pixels": "85decad31bd7f3f7c7967be8c2d08d8e89d21f6322bb9dc060de22ef45dd970c",
+      "seconds": 0.4990852081682533
+    },
+    {
+      "idle": true,
+      "label": "Northline Studio",
+      "pixels": "9515a4ae83cc6e16bf94c8772fb4c28bacb6ef283d31e18ea47072376f03bc25",
+      "seconds": 0.9297547920141369
+    },
+    {
+      "idle": true,
+      "label": "Phone",
+      "pixels": "85decad31bd7f3f7c7967be8c2d08d8e89d21f6322bb9dc060de22ef45dd970c",
+      "seconds": 0.6856104999314994
+    },
+    {
+      "idle": true,
+      "label": "Northline Studio",
+      "pixels": "af1eca59ac96840c8c1aa6db524bc973cf6f5e82aa820abd09a55c1848f8a39e",
+      "seconds": 0.7738927090540528
+    },
+    {
+      "idle": true,
+      "label": "Phone",
+      "pixels": "fbdf9e920cdc9d37e422278d357ae9518632374a118af33c0a7f048403f1a446",
+      "seconds": 1.6474425829946995
+    },
+    {
+      "idle": true,
+      "label": "Northline Studio",
+      "pixels": "9254c52e4bfb78bad25c208468ce263a8393158364e511fdaece1300e8013e78",
+      "seconds": 1.0644636249635369
+    },
+    {
+      "idle": true,
+      "label": "Phone",
+      "pixels": "3718ddf7b7306ce394edcd16faf90258825f4451668ad7f7d6774758ed2e0397",
+      "seconds": 0.9090505000203848
+    },
+    {
+      "idle": true,
+      "label": "Northline Studio",
+      "pixels": "b24dca1d5339bb5d3e83f1b048bccc0cdd2cbbb89ec4bbea21609419ed8bd9eb",
+      "seconds": 0.8642663341015577
+    },
+    {
+      "idle": true,
+      "label": "Phone",
+      "pixels": "3e9345a7bdf5605a313cf525c28f719bcc77a0ccfb68e53b2a03969ad6041d7b",
+      "seconds": 0.5799714168533683
+    },
+    {
+      "idle": true,
+      "label": "Northline Studio",
+      "pixels": "b24dca1d5339bb5d3e83f1b048bccc0cdd2cbbb89ec4bbea21609419ed8bd9eb",
+      "seconds": 0.8522768339607865
+    },
+    {
+      "idle": true,
+      "label": "Phone",
+      "pixels": "3e9345a7bdf5605a313cf525c28f719bcc77a0ccfb68e53b2a03969ad6041d7b",
+      "seconds": 0.5762038328684866
+    },
+    {
+      "idle": true,
+      "label": "Northline Studio",
+      "pixels": "b24dca1d5339bb5d3e83f1b048bccc0cdd2cbbb89ec4bbea21609419ed8bd9eb",
+      "seconds": 0.8044912500772625
+    },
+    {
+      "idle": true,
+      "label": "Phone",
+      "pixels": "3e9345a7bdf5605a313cf525c28f719bcc77a0ccfb68e53b2a03969ad6041d7b",
+      "seconds": 0.7856008750386536
+    },
+    {
+      "idle": true,
+      "label": "Northline Studio",
+      "pixels": "eb5ae3fc9dfdaa187ecc52a412e278bc218efb07ae7da0125b88509bc881f7b2",
+      "seconds": 0.8924369579181075
+    },
+    {
+      "idle": true,
+      "label": "Phone",
+      "pixels": "8c19412ac006346f6dcf95790ca60f05ae0b34caac53d0288c107bbb3a7a69f8",
+      "seconds": 0.6834769158158451
+    },
+    {
+      "idle": true,
+      "label": "Northline Studio",
+      "pixels": "52807526e3867f1ae7951dbe876db8043f46b026856dc474ad5f3e13de6c9f6b",
+      "seconds": 0.7649775419849902
+    },
+    {
+      "idle": true,
+      "label": "Phone",
+      "pixels": "8c19412ac006346f6dcf95790ca60f05ae0b34caac53d0288c107bbb3a7a69f8",
+      "seconds": 0.507654249900952
+    },
+    {
+      "idle": true,
+      "label": "Northline Studio",
+      "pixels": "52807526e3867f1ae7951dbe876db8043f46b026856dc474ad5f3e13de6c9f6b",
+      "seconds": 0.8516537500545382
+    },
+    {
+      "idle": true,
+      "label": "Phone",
+      "pixels": "8c19412ac006346f6dcf95790ca60f05ae0b34caac53d0288c107bbb3a7a69f8",
+      "seconds": 0.5842928749043494
+    },
+    {
+      "idle": true,
+      "label": "Northline Studio",
+      "pixels": "eb5ae3fc9dfdaa187ecc52a412e278bc218efb07ae7da0125b88509bc881f7b2",
+      "seconds": 0.7235404578968883
+    },
+    {
+      "idle": true,
+      "label": "Phone",
+      "pixels": "8c19412ac006346f6dcf95790ca60f05ae0b34caac53d0288c107bbb3a7a69f8",
+      "seconds": 0.646456666989252
+    },
+    {
+      "idle": true,
+      "label": "Northline Studio",
+      "pixels": "eb5ae3fc9dfdaa187ecc52a412e278bc218efb07ae7da0125b88509bc881f7b2",
+      "seconds": 0.630810874979943
+    },
+    {
+      "idle": true,
+      "label": "Phone",
+      "pixels": "8c19412ac006346f6dcf95790ca60f05ae0b34caac53d0288c107bbb3a7a69f8",
+      "seconds": 0.49832312506623566
+    },
+    {
+      "idle": true,
+      "label": "Northline Studio",
+      "pixels": "eb5ae3fc9dfdaa187ecc52a412e278bc218efb07ae7da0125b88509bc881f7b2",
+      "seconds": 0.5748509999830276
+    },
+    {
+      "idle": true,
+      "label": "Phone",
+      "pixels": "8c19412ac006346f6dcf95790ca60f05ae0b34caac53d0288c107bbb3a7a69f8",
+      "seconds": 0.4827119158580899
+    },
+    {
+      "idle": true,
+      "label": "Northline Studio",
+      "pixels": "eb5ae3fc9dfdaa187ecc52a412e278bc218efb07ae7da0125b88509bc881f7b2",
+      "seconds": 0.5471837918739766
+    },
+    {
+      "idle": true,
+      "label": "Phone",
+      "pixels": "8c19412ac006346f6dcf95790ca60f05ae0b34caac53d0288c107bbb3a7a69f8",
+      "seconds": 0.5304452921263874
+    },
+    {
+      "idle": true,
+      "label": "Northline Studio",
+      "pixels": "eb5ae3fc9dfdaa187ecc52a412e278bc218efb07ae7da0125b88509bc881f7b2",
+      "seconds": 0.617614374961704
+    },
+    {
+      "idle": true,
+      "label": "Phone",
+      "pixels": "8c19412ac006346f6dcf95790ca60f05ae0b34caac53d0288c107bbb3a7a69f8",
+      "seconds": 0.39818037510849535
+    },
+    {
+      "idle": true,
+      "label": "Northline Studio",
+      "pixels": "eb5ae3fc9dfdaa187ecc52a412e278bc218efb07ae7da0125b88509bc881f7b2",
+      "seconds": 0.6930781251285225
+    }
+  ]
+}
