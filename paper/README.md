@@ -1,4 +1,4 @@
-# Building the research note
+# Building the research paper
 
 From the repository root, run the following command with Tectonic installed.
 

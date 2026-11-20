@@ -1,61 +1,146 @@
 \documentclass[11pt,letterpaper]{article}
-\usepackage[margin=0.88in]{geometry}
-\usepackage{booktabs,array,graphicx,xcolor,hyperref}
-\definecolor{pine}{HTML}{194C40}
-\hypersetup{colorlinks=true,urlcolor=pine,linkcolor=pine,pdftitle={DroidFork: Fresh Android Checkpoint Forks on Apple Silicon},pdfauthor={Nikit Phadke}}
-\newcommand{\project}{\href{https://github.com/nikitph/droidfork}{DroidFork repository}}
-\newcommand{\data}[2]{\href{https://github.com/nikitph/droidfork/blob/main/results/#1}{#2}}
-\newcommand{\hd}[1]{\par\vspace{9pt}{\large\bfseries\color{pine} #1}\par\smallskip}
-\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
-\linespread{1.04}
+\usepackage[top=0.80in,bottom=0.84in,left=0.96in,right=0.96in]{geometry}
+\usepackage{booktabs,graphicx,xcolor,hyperref}
+\definecolor{ink}{HTML}{163E34}
+\hypersetup{colorlinks=true,linkcolor=ink,citecolor=ink,urlcolor=ink,
+  pdftitle={DroidFork: Measuring Fresh Android Checkpoint Forks Through a Verified First Action},
+  pdfauthor={Nikit Phadke}}
+\newcommand{\repo}{https://github.com/nikitph/droidfork}
+\newcommand{\artifact}[2]{\href{https://github.com/nikitph/droidfork/blob/v0.1.1/#1}{#2}}
+\newcommand{\unit}[1]{#1\,s}
+\newcommand{\subhead}[1]{\par\smallskip\noindent\textbf{#1}\enspace}
+\setlength{\parskip}{3pt plus 1pt}
+\setlength{\parindent}{1.1em}
+\setlength{\textfloatsep}{10pt}
+\setlength{\intextsep}{8pt}
+\renewcommand{\arraystretch}{1.12}
+\title{\vspace{-1.4em}\textbf{DroidFork}\\[3pt]
+\large Measuring Fresh Android Checkpoint Forks Through a Verified First Action}
+\author{Nikit Phadke}
+\date{20 November 2026}
 \begin{document}
-{\small\sffamily\color{pine} SYSTEMS RESEARCH NOTE \hfill 20 NOVEMBER 2026}\par
-\vspace{12pt}{\Huge\bfseries DroidFork}\par
-{\LARGE Fresh Android checkpoint forks on Apple Silicon}\par
-\vspace{5pt}Nikit Phadke \quad $\cdot$ \quad \project\par
-\hd{Abstract}
-Branching an agent trajectory requires reproducing intermediate application state and accepting the next action. We measure that operation end to end on an Apple M1 Pro. A modified Android Emulator creates a fresh child from a saved Contacts draft, injects a touchscreen event, and returns a live accessibility hierarchy and a rendered image. The fastest verified request took 1.145\,s. Across six repeat native-touchscreen launches, every request passed and the median was 1.233\,s. The child had no process, private disk or reserved VM at request time. Read-only checkpoint preparation and ordinary filesystem caching were allowed. The measurements cover one offline task and one host.
-\hd{1\quad The timing contract}
-A trainer has reached an unsaved Contacts editor containing the synthetic draft Mira Shah at Northline Studio. Company has focus. A new branch must recover the in-memory draft and move focus to Phone. Creating a checkpoint, building the emulator, and exporting RAM are one-time costs outside the request. The timer starts before binding the control socket, cloning private AVD disks or starting the emulator. It stops after the host has decoded the post-tap image and verified both the tree and the change in the visible underline.
-\begin{center}\begin{tabular}{@{}lr@{}}\toprule
-Event in the fastest request & Time since request (s) \\ \midrule
-Created private disks and spawned process & 0.014\\
-Guest connected & 0.468\\
-Received checkpoint identity & 0.469\\
-Captured initial frame and sent touchscreen up & 0.487\\
-Full tree arrived with Phone focused & 0.879\\
-Verified the rendered frame and both underlines & \textbf{1.145}\\ \bottomrule
-\end{tabular}\end{center}
-\hd{2\quad Restoring the machine}
-Android Emulator snapshots preserve guest OS, device and application state [1]. DroidFork seals a named snapshot and creates a private AVD disk set with APFS copy-on-write clones. An offline exporter reorganizes saved main RAM into page order and binds the layout to the saved index. At restore time a patched ARM backend for Apple’s Hypervisor framework [3] privately maps the prepared RAM file into the fresh child. The child may dirty its own pages. CPU and device state, including graphics, still come from the named snapshot. A volatile Android property identifies the expected checkpoint after resume. The patches target a pinned AOSP emulator revision [2].
-\newpage
-\hd{3\quad Measuring a real action}
-The benchmark used Android 15 (API 35, ARM64 Google APIs userdebug), emulator 37.2.12, a 480$\times$854 display, and 2.5\,GiB of guest RAM. The host ran macOS 27.0 on an eight-core M1 Pro with 16\,GiB of RAM. Each test starts a new headless emulator process. A relay inside the restored guest connects to the host, returns the checkpoint identity and exchanges observations with an Android accessibility service. The winning configuration uses four virtual CPUs, the M1 Pro GPU and the emulator console's touchscreen down/up events.
-\begin{center}
-\includegraphics[width=.435\linewidth]{../docs/company-detail.png}\hspace{.04\linewidth}\includegraphics[width=.435\linewidth]{../docs/phone-detail.png}\\[-1pt]
-\small (a) Before the tap \hspace{.20\linewidth} (b) After the tap
-\end{center}
-{\small\textbf{Figure 1.} Matching crops from the fastest child's recorded frames. The verifier decodes the full 480$\times$854 PNG, samples the actual field bounds from the live hierarchy, and checks for blue under Phone and its absence under Company.}
-\hd{4\quad Results}
-The six native-touchscreen requests on the same four-vCPU checkpoint took 1.328, 1.252, 1.154, 1.271, 1.215 and 1.145\,s in execution order. All passed. Their median was 1.233\,s, computed before rounding. In the same alternating series the first Android-dispatched gesture launch of a newly staged executable took 14.511\,s. First-launch effects matter when interpreting repeat-launch results. Ordinary OS caches were left enabled.
-\begin{center}\begin{tabular}{@{}lrrr@{}}\toprule
-Individual request & Guest connected & Remaining & Total \\ \midrule
-Earlier two-vCPU software-rendered request & 1.083 & 2.407 & 3.490\\
-Optimized two-vCPU software-rendered request & 0.505 & 1.065 & 1.570\\
-Four-vCPU hardware-rendered minimum & 0.468 & 0.677 & 1.145\\ \bottomrule
-\end{tabular}\end{center}
-{\small\textbf{Table 1.} Times in seconds. Rows are individual observations. The four-vCPU fixture was saved separately with hardware rendering. Differences across rows include configuration and run-to-run effects.}
-\par In a separate comparison, five alternating pairs used the same two-vCPU checkpoint. The original path passed 5/5 with a 3.271\,s median. A native-input variant polling the host renderer concurrently passed 4/5, with a 2.544\,s median among passes. One optimized attempt closed its observation stream without establishing the focus change. This matched comparison used a different capture schedule from the fastest touchscreen trial.
-\newpage
-\hd{5\quad Where the time went}
-On the original 3.490\,s request, about 242\,ms elapsed from starting to load gfxstream to entering the renderer. A native stack sample traced work to dyld symbol resolution. Keeping dynamic lookup for unresolved host symbols and using two-level lookup for the renderer's other references reduced the observed repeat library load to about 5\,ms. Supplying the identical SDK kernel already decompressed reduced early setup work. An optional explicit SDK ADB path probes one executable and falls back to ordinary discovery on failure.
-\par On an instrumented replay using the original observation path, Android reported gesture completion 0.302\,s after the guest observer began handling the request. It found Phone focused at 0.874\,s. The screenshot callback arrived at 1.249\,s and PNG encoding finished at 2.090\,s. Tree serialization overlapped capture. Guest stages use a separate monotonic clock. Reading the full emulator framebuffer on the host removes the guest bitmap copy and encoding from the winning path.
-\par On the fastest request, 392\,ms separated sending the tap from receiving the tree. Another 265\,ms elapsed through screenshot acquisition and host verification. A different child showed the correct pixels as early as 742\,ms but returned the tree at 1.526\,s. Combining milestones from different children would understate latency. No complete trial established a subsecond verified tap.
-\hd{6\quad Interpretation and reproducibility}
-The experiment measures one local child and one deterministic first action in Contacts. It does not estimate simultaneous fan-out, throughput, long-horizon policy performance, arbitrary app restore fidelity, or cost on another host. No commercial environment was benchmarked. The checkpoint includes an observer configured in advance. Isolation checks saved a contact in a child after timing and reopened the sealed checkpoint to check its original unsaved state and focus. These checks establish isolation for the exercised draft.
-\par The repository includes the emulator patches, upstream revision manifest, instrumented observer, runner, per-request timings, original full-resolution frames and accessibility XML. The \href{https://github.com/nikitph/droidfork/tree/main/experiments/fresh-restore}{build and fixture recipe} describes creating the source checkpoint and performing the measurement. The \data{fresh-profile/host-fixed-adb.json}{four-vCPU run file} contains every request in the headline series. The \data{FRESH-PROFILE.md}{profiling report} links the paired controls, failures and alternative capture strategies.
-\hd{References}
-[1] Android Developers. \href{https://developer.android.com/studio/run/emulator-snapshots}{Snapshots in the Android Emulator}.\par
-[2] Android Open Source Project. \href{https://android.googlesource.com/platform/external/qemu/+/bbaa8072362a251645b339b97a737a725c776126/}{Emulator QEMU source, revision \texttt{bbaa8072362a}}.\par
-[3] Apple Developer Documentation. \href{https://developer.apple.com/documentation/hypervisor}{Hypervisor framework}.
+\maketitle
+\begin{abstract}
+A branch in an interactive training environment becomes useful when the child can execute an action and return its observable effect. We present DroidFork, a prototype that restores an Android Emulator checkpoint into a new process on Apple Silicon. At request time it creates private disk clones and maps a preprocessed guest RAM image copy-on-write. We time restoration through a touchscreen action in an unsaved Contacts draft and require agreement between the live accessibility hierarchy and rendered pixels. On one Apple M1 Pro, six repeat touchscreen trials on a four-vCPU guest all passed, with a median of \unit{1.233} and a minimum of \unit{1.145}. In the fastest trial the guest connected at \unit{0.468} and returned the updated hierarchy at \unit{0.879}. In a separate two-vCPU matched comparison, the optimized path was faster in three of four pairs with two successful observations; a fifth pair had an optimized-path failure. These measurements characterize a single local task with a prepared source checkpoint and ordinary host caches.
+\end{abstract}
+
+\section{Introduction}
+Consider an Android agent that has entered a name and company in a contact editor. A trainer wishes to evaluate two possible next actions from the same unsaved form. Replaying the preceding actions incurs interaction costs and requires reproducing the same intermediate state. Saving a machine checkpoint permits several trajectories to share that prefix. The question we study is how long a newly requested child takes to produce evidence that its first action affected the restored application.
+
+Several endpoints could serve as proxies: the host can observe process creation, guest connectivity, an input acknowledgement, or an updated accessibility node. They represent different events. In the fastest trial the accessibility hierarchy already showed Phone focused when it reached the host. Acquiring and verifying the rendered frame took a further 265\,ms. A timing endpoint that accepts either observation alone would change the result.
+
+This paper specifies a fork-to-action measurement boundary, describes the changes to the emulator and observation path, and reports both the individual requests and a matched comparison. The target was one verified action in under one second without preparing the child. The closest observed request exceeded that target by 145\,ms.
+
+\clearpage
+\section{System design}
+\subhead{Source checkpoint.}
+DroidFork saves a named Android Virtual Device (AVD) snapshot of the running guest. Its disk state, guest CPU and device state, and RAM preserve the unsaved Contacts draft. The guest already contains an accessibility service, a relay, and a volatile checkpoint identifier. These components belong to the saved source. Before any request, an exporter reads the snapshot's RAM index and writes the main memory block in guest-page order. For the tested layout the pages are 16\,KiB. The exported file contains a digest of the index so that the loader can check that the layout corresponds to the selected checkpoint. This is a consistency check for a trusted local artifact.
+
+\subhead{Child creation.}
+The host creates a private AVD directory from the saved disks using APFS file clones, allocates a console port, and launches a new headless emulator process. A patch to the ARM Hypervisor.framework backend maps the prepared main RAM file privately into the child. Unchanged data can share backing storage, while writes become private to the mapping. The emulator also restores the remaining named snapshot state, including graphics state. The first guest message opens the observation channel; the returned volatile identifier establishes which checkpoint resumed. Source creation, RAM export, and kernel decompression are amortizable costs outside the measured interval. No child process, private child disks, or reserved child VM exists before the request.
+
+\subhead{Launch and observation paths.}
+On macOS, the modified gfxstream library uses two-level symbol lookup while retaining dynamic lookup for unresolved host symbols. The launcher accepts a decompressed, byte-identical copy of the SDK kernel. An optional setting selects one SDK Android Debug Bridge (ADB) executable, checks its protocol, and falls back to ordinary discovery if necessary. For native touchscreen trials, the host captures the initial child frame and injects a down/up event through the authenticated emulator console. An in-guest observer serializes the live hierarchy. The host reads the renderer's full-resolution frame, avoiding a guest bitmap copy and guest-side PNG encoding. The control path instead dispatches a gesture and obtains a screenshot through Android accessibility.
+
+\begin{figure}[h]
+\centering
+\begin{tabular}{@{}c@{\hspace{.035\linewidth}}c@{}}
+\includegraphics[width=.43\linewidth]{../docs/company-detail.png}&
+\includegraphics[width=.43\linewidth]{../docs/phone-detail.png}\\
+\small (a) Before input & \small (b) After input
+\end{tabular}
+\caption{Matched crops of the fastest child's recorded frames. The focused field changes from Company to Phone. Verification uses the original full-resolution images and bounds from the live hierarchy.}
+\label{fig:fields}
+\end{figure}
+
+\clearpage
+\section{Experimental method}
+\subhead{Platform and task.}
+We used an eight-core Apple M1 Pro with 16\,GiB RAM, macOS 27.0, APFS, and an ARM64 Android 15 Google APIs userdebug image (API 35). The guest used 2.5\,GiB RAM and a $480\times854$ display. The modified engine targets Android Emulator 37.2.12, build 16428233. The two-vCPU experiments used software rendering. The four-vCPU experiments used a separately saved, hardware-rendered checkpoint of the same task. The synthetic editor initially contained Mira Shah and Northline Studio, with Company focused. All measurements were local. The host retained its ordinary filesystem caches between requests.
+
+\subhead{Operational definition.}
+Let $t_0$ be the host monotonic time immediately before listener setup, private AVD creation and process launch; $t_c$ the first guest connection; and $t_v$ completion of the host verifier. For a passing request we report
+\[
+ T_{\mathrm{verified}} = (t_c-t_0) + (t_v-t_c).
+\]
+The host checks the checkpoint identifier, parses the full post-action accessibility hierarchy, verifies the expected draft values and controls, and requires Phone to have input focus. It decodes the rendered PNG and uses the field bounds to sample the central column of the six bottom pixel rows. A sampled pixel counts as blue when $B-R>48$ and $B-G>32$ on 8-bit RGB channels. At least one sample must pass for Phone and none for Company. The native touchscreen path also checks the opposite pattern in the initial child frame (Fig.~\ref{fig:fields}). The benchmark records a failure if a required observation is missing. Such a trial has no verified latency.
+
+\subhead{Comparisons.}
+We distinguish three sources of evidence. Instrumented diagnostic runs locate delays in selected requests. A matched series holds the two-vCPU checkpoint fixed and alternates which build runs first across five rounds. Its control uses the prior modified emulator with private RAM mapping, Android-dispatched input and guest screenshot capture. Its optimized variant adds the launch changes and uses native touch with concurrent host framebuffer polling. Finally, a four-vCPU series interleaves six native touchscreen requests with six Android-gesture requests. The six native requests form the headline sample. The benchmark did not flush host caches or randomize trial order. We report descriptive statistics from unrounded observations and keep failures in the denominators.
+
+\subhead{Isolation check.}
+After timing selected children, the harness verifies that a contact can be saved in the child. A separate reopening of the source checks the original editor focus and the absence of a saved contact. This exercises an application-visible consequence of disk and memory isolation. These later checks do not contribute to $T_{\mathrm{verified}}$.
+
+\clearpage
+\section{Results}
+\subhead{Matched two-vCPU comparison.}
+Table~\ref{tab:pairs} reports all ten attempts. Among completed pairs, three favored the optimized path; in round 5 it took \unit{2.793} longer than its control. The control passed all five attempts, with a median of \unit{3.271}. The optimized variant passed four, with a conditional median of \unit{2.544}. These medians summarize different sets of successful runs. The matched data therefore support a reduction in several individual requests, with both a failure and a substantial regression remaining visible.
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{@{}rlrr@{}}
+\toprule Round & First path executed & Control (s) & Optimized (s) \\ \midrule
+1 & Control   & 8.265 & Stream closed\\
+2 & Optimized & 3.051 & 2.517\\
+3 & Control   & 3.271 & 2.571\\
+4 & Optimized & 3.851 & 2.375\\
+5 & Control   & 3.057 & 5.850\\ \bottomrule
+\end{tabular}
+\caption{Request-to-verification latency on the same saved two-vCPU checkpoint. In round 1 the optimized child closed the result stream before a transition could be verified.}\label{tab:pairs}
+\end{table}
+
+\subhead{Four-vCPU hardware rendering.}
+Every native touchscreen request passed (Table~\ref{tab:touch}). The six values span \unit{1.145} to \unit{1.328}. Their median, \unit{1.233}, uses the two middle observations at full precision. The first launch of the newly staged executable used the companion Android-gesture path and took \unit{14.511}. This observation records a first-launch cost under another input path; the experiment does not establish the cold-start distribution for native touchscreen requests.
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{@{}rrrrr@{}}\toprule
+Trial & Guest connected & Touch sent & Tree received & Verified \\ \midrule
+1 & 0.502 & 0.522 & 1.116 & 1.328\\
+2 & 0.504 & 0.525 & 1.228 & 1.252\\
+3 & 0.470 & 0.490 & 1.130 & 1.154\\
+4 & 0.507 & 0.526 & 1.246 & 1.271\\
+5 & 0.485 & 0.504 & 1.192 & 1.215\\
+6 & 0.468 & 0.487 & 0.879 & \textbf{1.145}\\ \bottomrule
+\end{tabular}
+\caption{All native touchscreen trials in execution order. Entries are cumulative seconds on a common host clock. Trial 6 received the tree earliest, but then spent 265\,ms acquiring and verifying the rendered result.}\label{tab:touch}
+\end{table}
+
+\clearpage
+\section{Latency attribution}
+An earlier two-vCPU request took \unit{3.490}: \unit{1.083} elapsed before connection and \unit{2.407} thereafter. Within startup, approximately 242\,ms separated the start of gfxstream loading from entry into the renderer, and the named snapshot load took 134\,ms. A stack sample implicated dynamic-loader symbol resolution. After relinking, the observed repeat renderer library load took approximately 5\,ms. A separate optimized two-vCPU request reached the guest at \unit{0.505} and passed at \unit{1.570}. The changes were bundled and the two requests were selected for diagnosis. Their difference cannot identify the independent effect of each modification.
+
+In an instrumented replay of the earlier guest observation path, gesture completion occurred 302\,ms after the observer began handling the request. The observer found Phone focused at 874\,ms, received the screenshot callback at 1,249\,ms and finished PNG encoding at 2,090\,ms. Tree serialization overlapped screenshot capture. These timestamps share a guest clock with one another; the host clock has a different origin. Moving image capture to the host removed guest-side encoding, while preserving the cost of waiting for a usable rendered frame.
+
+\section{Related work and scope}
+SnowFlock demonstrated rapid virtual machine cloning and the use of shared initial state for parallel workers~\cite{snowflock}. REAP identified the memory working set of snapshot-restored serverless functions and prefetched it to improve startup~\cite{reap}. DroidFork uses an existing Android Emulator snapshot~\cite{snapshot} and a page-ordered backing file. Its empirical contribution is a local Android measurement that includes the first action, hierarchy retrieval, and optical confirmation. The endpoints and workloads differ across these studies, precluding a numerical speedup comparison. AndroidWorld evaluates agents through executable tasks and device-state checks~\cite{androidworld}. The present experiment isolates one transition within one application; it does not measure agent performance across that benchmark.
+
+The focus predicate depends on the tested Contacts layout and theme. Different apps, display configurations and actions require suitable semantic and visual checks. Repeated requests share a single host and checkpoint, so their variation cannot characterize independent machines or a broader workload population. The experiments do not quantify checkpoint preparation cost amortized over a training job, multi-child throughput, physical memory savings, learning efficiency, or behavior on remote infrastructure. Changing both CPU count and renderer also prevents attributing the four-vCPU minimum to either factor alone.
+
+\section{Conclusion}
+For a prepared Android checkpoint on one M1 Pro, DroidFork created a fresh child and verified its first touchscreen action in a median of \unit{1.233} across six repeat requests. The fastest child's connection preceded verified completion by \unit{0.677}. Measuring this interval exposed costs in both Android input observation and graphics capture that a connection-only benchmark would omit.
+
+\clearpage
+\section*{Artifact availability}
+The public \href{\repo}{DroidFork repository} contains the emulator patches, checkpoint exporter, Android observer, input relay, benchmark drivers, and full-resolution image and XML evidence. The links below identify the version used for this analysis. The following command, run from the repository root, recomputes the native-touchscreen summary from the released traces and checks both recorded image hashes with the host verifier.
+\begin{center}\small\texttt{uv run --python 3.12 python -m scripts.verify\_public\_result}\end{center}
+\noindent
+\begin{tabular}{@{}p{.24\linewidth}p{.71\linewidth}@{}}
+\toprule Evidence & Versioned artifact \\ \midrule
+Implementation & \artifact{experiments/fresh-restore/README.md}{Build and fixture instructions}; \artifact{experiments/fresh-restore/source-revisions.json}{AOSP source revisions}\\
+Matched comparison & \artifact{results/fresh-profile/matched/paired.json}{Per-round timings and failure record}; \artifact{results/fresh-profile/matched/isolation.json}{source isolation check}\\
+Hardware rendering & \artifact{results/fresh-profile/host-fixed-adb.json}{All twelve interleaved requests and source check}\\
+Stage attribution & \artifact{results/fresh-profile/startup-traces.json}{Host startup traces}; \artifact{results/fresh-profile/guest-baseline.json}{guest observer traces}\\
+Verification & \artifact{scripts/latency.py}{Field and pixel predicates}; \artifact{results/fresh-profile/evidence/host-fixed-adb/touch-direct-map-best.xml}{winning child's accessibility hierarchy}\\ \bottomrule
+\end{tabular}
+
+\begin{thebibliography}{9}
+\bibitem{snowflock} H. A. Lagar-Cavilla, J. A. Whitney, A. Scannell, P. Patchin, S. M. Rumble, E. de Lara, M. Brudno, and M. Satyanarayanan.
+\href{https://www.scs.stanford.edu/~rumble/papers/LagarCavillaEurosys09.pdf}{SnowFlock: Rapid Virtual Machine Cloning for Cloud Computing}. In \emph{Proceedings of EuroSys}, 2009.
+\bibitem{reap} D. Ustiugov, P. Petrov, M. Kogias, E. Bugnion, and B. Grot.
+\href{https://arxiv.org/abs/2101.09355}{Benchmarking, Analysis, and Optimization of Serverless Function Snapshots}. In \emph{Proceedings of ASPLOS}, 2021.
+\bibitem{snapshot} Android Developers. \href{https://developer.android.com/studio/run/emulator-snapshots}{Snapshots}. Android Emulator documentation.
+\bibitem{androidworld} C. Rawles et al.
+\href{https://proceedings.iclr.cc/paper_files/paper/2025/hash/01a83bc2f2732a58e6aa731e659e7101-Abstract-Conference.html}{AndroidWorld: A Dynamic Benchmarking Environment for Autonomous Agents}. In \emph{International Conference on Learning Representations}, 2025.
+\end{thebibliography}
 \end{document}
