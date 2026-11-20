@@ -3,7 +3,7 @@
 \usepackage{booktabs,graphicx,xcolor,hyperref}
 \definecolor{ink}{HTML}{163E34}
 \hypersetup{colorlinks=true,linkcolor=ink,citecolor=ink,urlcolor=ink,
-  pdftitle={DroidFork: Measuring Fresh Android Checkpoint Forks Through a Verified First Action},
+  pdftitle={DroidFork: Reducing Environment Overhead in Android Reinforcement Learning},
   pdfauthor={Nikit Phadke}}
 \newcommand{\repo}{https://github.com/nikitph/droidfork}
 \newcommand{\artifact}[2]{\href{https://github.com/nikitph/droidfork/blob/v0.1.1/#1}{#2}}
@@ -15,21 +15,59 @@
 \setlength{\intextsep}{8pt}
 \renewcommand{\arraystretch}{1.12}
 \title{\vspace{-1.4em}\textbf{DroidFork}\\[3pt]
-\large Measuring Fresh Android Checkpoint Forks Through a Verified First Action}
+\large Reducing Environment Overhead in Android Reinforcement Learning}
 \author{Nikit Phadke}
 \date{20 November 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
-A branch in an interactive training environment becomes useful when the child can execute an action and return its observable effect. We present DroidFork, a prototype that restores an Android Emulator checkpoint into a new process on Apple Silicon. At request time it creates private disk clones and maps a preprocessed guest RAM image copy-on-write. We time restoration through a touchscreen action in an unsaved Contacts draft and require agreement between the live accessibility hierarchy and rendered pixels. On one Apple M1 Pro, six repeat touchscreen trials on a four-vCPU guest all passed, with a median of \unit{1.233} and a minimum of \unit{1.145}. In the fastest trial the guest connected at \unit{0.468} and returned the updated hierarchy at \unit{0.879}. In a separate two-vCPU matched comparison, the optimized path was faster in three of four pairs with two successful observations; a fifth pair had an optimized-path failure. These measurements characterize a single local task with a prepared source checkpoint and ordinary host caches.
+Online reinforcement learning for Android agents requires a supply of completed interactions with a stateful device. Resetting the environment, replaying earlier actions, waiting for the UI, and checking the resulting state all consume host time before a trajectory yields a reward. We study whether a trainer can reuse a costly trajectory prefix by checkpointing the emulator and branching at an intermediate state. In a scripted two-rollout Contacts workload on an Apple M1 Pro, median batch time was 47.74\,s for cold replay, 24.39\,s for warm replay, and 40.96\,s for an initial on-demand fork. The advantage of warm replay motivated a second experiment isolating child creation and the first observable action. DroidFork prepares the source RAM layout once, creates private child disks and memory on request, and verifies a touchscreen action through both the live UI hierarchy and rendered pixels. Six repeat native-touchscreen trials passed in a median of 1.233\,s, with a minimum of 1.145\,s. The batch experiment measures environment-side rollout throughput; the optimized experiment measures a component of it. End-to-end policy-training speedup remains an open question.
 \end{abstract}
 
 \section{Introduction}
-Consider an Android agent that has entered a name and company in a contact editor. A trainer wishes to evaluate two possible next actions from the same unsaved form. Replaying the preceding actions incurs interaction costs and requires reproducing the same intermediate state. Saving a machine checkpoint permits several trajectories to share that prefix. The question we study is how long a newly requested child takes to produce evidence that its first action affected the restored application.
+An Android agent learning to use a graphical interface needs experience. It observes a screen, chooses an action, sends it to a device, and waits for the next observation. Eventually a task-specific judge determines whether the trajectory achieved its goal. A faster policy can choose an action sooner, but the next decision still depends on an application responding and the environment returning its new state. With a fixed number of devices, those waits limit how many trajectories a trainer can collect in an hour. Emulator latency and the cost of obtaining additional online samples have also been identified in work on Android agent training~\cite{coach}.
 
-Several endpoints could serve as proxies: the host can observe process creation, guest connectivity, an input acknowledgement, or an updated accessibility node. They represent different events. In the fastest trial the accessibility hierarchy already showed Phone focused when it reached the host. Acquiring and verifying the rendered frame took a further 265\,ms. A timing endpoint that accepts either observation alone would change the result.
+Our starting question was where the environment spends that time and which work a trainer can reuse. Repeated attempts at the same task offer an opportunity. Several trajectories may open the same app, navigate to the same editor, and enter the same data before reaching the decision where their actions diverge. Running each attempt from a clean start pays for those earlier interactions again. A machine checkpoint can preserve the application and guest state reached by the first attempt. The trainer can then request additional devices from that state as it needs them. The value of this strategy depends on the cost of obtaining a usable child and on the amount of common work it displaces.
 
-This paper specifies a fork-to-action measurement boundary, describes the changes to the emulator and observation path, and reports both the individual requests and a matched comparison. The target was one verified action in under one second without preparing the child. The closest observed request exceeded that target by 145\,ms.
+\clearpage
+\section{Measuring the environment cost of a rollout}
+\subhead{Workload and unit of analysis.}
+We first measured a complete, scripted Android task. A batch consisted of two trajectories starting from the same clean fixture. Each reached a Contacts editor containing a name and company, entered a phone number and saved the contact. One trajectory used the requested number; the other used an alternative. The judge read the Contacts Provider outside the GUI action channel. Thus both continuations performed real actions and produced a checkable outcome. A policy script supplied the actions, allowing us to time the environment without a model server or optimizer in the loop. The reward split was specified by the workload and does not estimate policy accuracy.
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{@{}lrrr@{}}\toprule
+Execution strategy & Batches & Median batch (s) & Rollouts per host-hour\\ \midrule
+Cold boot and replay & 5 & 47.74 & 150.9\\
+Warm rewind and replay & 5 & 24.39 & 295.4\\
+On-demand machine fork & 5 & 40.96 & 174.0\\ \bottomrule
+\end{tabular}
+\caption{Initial stock-emulator experiment. Each batch produced two scored trajectories. Rates are extrapolated as 3,600 times the total completed rollouts divided by total measured batch seconds. The warm path starts with two running workers; the other paths include launch and release.}\label{tab:batch}
+\end{table}
+
+\subhead{What the comparison controls.}
+Cold replay starts two new emulators and executes the shared interaction sequence on each. Warm replay rewinds two running workers and also executes that sequence twice. Both replay strategies execute the two prefixes in parallel. The fork strategy resets a parent, executes the prefix once, seals a machine checkpoint, and creates two children on demand. Each strategy then executes and scores both continuations. Every policy step returns a screenshot, accessibility tree, and foreground activity through the trainer interface. Provisioning and retiring the warm worker pair, if required for each batch, incurred a separate median cost of 5.61\,s.
+
+\subhead{Why we investigated fork latency.}
+Warm replay collected the most trajectories per host-hour in this workload (Table~\ref{tab:batch}). The fork avoided duplicated prefix actions but introduced a serial dependency: the children could begin only after the parent reached the branch point and saved it. On the fork path, the median shared prefix took 12.50\,s, checkpoint capture took 2.70\,s, and the request through the first verified actions of both children took 9.25\,s. Completing the suffixes and scoring them took a further median 8.32\,s. These are separately calculated stage medians. They identify costs worth investigating without constituting a decomposition of the median batch. In particular, a cheaper first action on each new child could improve branch availability even when suffix execution and reward checks remain expensive.
+
+\clearpage
+\section{From repeated interaction to reusable state}
+\subhead{What a trainer can reuse.}
+Consider the point just before the phone number is entered. The unsaved name and company live in the running application. A screenshot can show those fields, but the trainer also needs an executable device in that state: a tap must reach the correct widget, text entry must update the editor, and a save must change only that branch's provider state. A machine checkpoint preserves the state from which those consequences can be produced. Branching lets a trainer collect different continuations of a visited prefix. If the trajectories diverge near the start of the task, there is little common work to recover.
+
+\subhead{A simple amortization condition.}
+Let $P$ denote the serial environment work needed to reach a given decision once, $C$ the work of capturing and preparing its checkpoint, and $F$ the work of restoring one child to the point where continuation begins. For $k$ continuations with the same suffix work under both strategies, replay incurs $kP$ in prefix work. Branching incurs $P+C+kF$. Under these assumptions the avoided work exceeds the added work when
+\[
+                     (k-1)P > C + kF .
+\]
+This is an accounting model for repeated work. It assumes comparable resets, identical suffix boundaries, and no resource contention. A pool can replay several prefixes simultaneously, a checkpoint can outlive its first batch, and concurrent children can compete for CPU and memory. Each effect changes elapsed host time. We evaluate that quantity with complete timed batches rather than substituting single-child measurements into this expression.
+
+\subhead{Which latency should be optimized?}
+A running worker, a precreated child parked at a known checkpoint, and a fresh child occupy different resource budgets. In a separate trainer-interface experiment a tap on a running device took a median 0.556\,s over 50 taps. Resuming one checkpoint-specific parked child through a tap took a median 0.482\,s over three trials, following 4.655\,s of median advance preparation. A parked child consumes an emulator slot before the trainer asks for it. That tradeoff matters when a policy decides where to branch only after observing the state. DroidFork permits preparation of the reusable source and starts all child-specific setup on request.
+
+\subhead{Experimental question.}
+We narrowed the optimization study to an already saved checkpoint, one newly requested child, and the first verified action in that child. Guest connection, accessibility focus and visible focus are separately observable endpoints. A trainer that conditions its next action on the screen must wait for the visible effect as well. We set a target of less than one second from request to verification. The later experiments quantify progress on this boundary; evaluating the resulting policy learner would require integrating the optimized path into a full training loop.
 
 \clearpage
 \section{System design}
@@ -115,10 +153,18 @@ In an instrumented replay of the earlier guest observation path, gesture complet
 \section{Related work and scope}
 SnowFlock demonstrated rapid virtual machine cloning and the use of shared initial state for parallel workers~\cite{snowflock}. REAP identified the memory working set of snapshot-restored serverless functions and prefetched it to improve startup~\cite{reap}. DroidFork uses an existing Android Emulator snapshot~\cite{snapshot} and a page-ordered backing file. Its empirical contribution is a local Android measurement that includes the first action, hierarchy retrieval, and optical confirmation. The endpoints and workloads differ across these studies, precluding a numerical speedup comparison. AndroidWorld evaluates agents through executable tasks and device-state checks~\cite{androidworld}. The present experiment isolates one transition within one application; it does not measure agent performance across that benchmark.
 
-The focus predicate depends on the tested Contacts layout and theme. Different apps, display configurations and actions require suitable semantic and visual checks. Repeated requests share a single host and checkpoint, so their variation cannot characterize independent machines or a broader workload population. The experiments do not quantify checkpoint preparation cost amortized over a training job, multi-child throughput, physical memory savings, learning efficiency, or behavior on remote infrastructure. Changing both CPU count and renderer also prevents attributing the four-vCPU minimum to either factor alone.
+The focus predicate depends on the tested Contacts layout and theme. Different apps, display configurations and actions require suitable semantic and visual checks. Repeated requests share a single host and checkpoint, so their variation cannot characterize independent machines or a broader workload population. The optimized single-child experiments leave open the amortized preparation cost over a training job, multi-child throughput with the new backend, physical memory savings, learning efficiency, and behavior on remote infrastructure. Changing both CPU count and renderer also prevents attributing the four-vCPU minimum to either factor alone.
+
+\clearpage
+\section{Implications for online training}
+The two measurements answer different deployment questions. For a trainer choosing among the initial stock-emulator strategies, warm replay gave the best measured throughput for two short continuations and two available workers. It incurred repeated device interactions, but the workers could execute them at the same time. A fresh fork becomes more attractive when prefixes are longer, the same checkpoint can support more continuations, or the trainer cannot afford to reserve one idle worker for each potential branch. These are conditions to test, rather than observed gains in the optimized experiment.
+
+The measurements also expose a distinction between environment efficiency and sample efficiency. If each rollout becomes cheaper and the distribution of trajectories stays fixed, a fixed host budget may buy more observations. Whether those observations improve a policy depends on which states are visited, how alternatives are chosen, and how their rewards enter the update. Many sibling trajectories share most of their history. Counting them as completed trajectories is appropriate for an environment benchmark, but their learning value need not match that of the same number of independent starts.
+
+A direct follow-up would run a fixed policy, task distribution, worker budget and reward verifier against both warm replay and the optimized fresh-fork backend. Varying prefix length and branch count would test the amortization condition. A full comparison should charge checkpoint preparation, repeated and failed actions, suffix execution, reward evaluation, cleanup and any idle reserved capacity. The primary environment outcomes would be verified trajectories per host-hour and host-seconds per successful trajectory. In a subsequent training experiment, elapsed time to a specified held-out success rate would address the broader RL question. The current data do not supply that measurement.
 
 \section{Conclusion}
-For a prepared Android checkpoint on one M1 Pro, DroidFork created a fresh child and verified its first touchscreen action in a median of \unit{1.233} across six repeat requests. The fastest child's connection preceded verified completion by \unit{0.677}. Measuring this interval exposed costs in both Android input observation and graphics capture that a connection-only benchmark would omit.
+Slow Android environment interaction motivated this work. The first complete workload showed both the opportunity and the obstacle: 12.50\,s of median shared-prefix work could be reused, but the original fork still delivered fewer rollouts per host-hour than two warm workers. After changes to restore, input, and observation, a fresh four-vCPU child reached a verified tap in a median of 1.233\,s across six requests. This establishes the cost of one on-demand branch operation on the tested host. It provides a concrete baseline for determining when state reuse increases the rate at which a trainer obtains useful experience.
 
 \clearpage
 \section*{Artifact availability}
@@ -127,6 +173,7 @@ The public \href{\repo}{DroidFork repository} contains the emulator patches, che
 \noindent
 \begin{tabular}{@{}p{.24\linewidth}p{.71\linewidth}@{}}
 \toprule Evidence & Versioned artifact \\ \midrule
+Initial workload & \artifact{results/bench.json}{Complete scored batches}; \artifact{results/REPORT.md}{throughput and stage definitions}; \artifact{results/LATENCY.md}{running, parked and fresh measurements}\\
 Implementation & \artifact{experiments/fresh-restore/README.md}{Build and fixture instructions}; \artifact{experiments/fresh-restore/source-revisions.json}{AOSP source revisions}\\
 Matched comparison & \artifact{results/fresh-profile/matched/paired.json}{Per-round timings and failure record}; \artifact{results/fresh-profile/matched/isolation.json}{source isolation check}\\
 Hardware rendering & \artifact{results/fresh-profile/host-fixed-adb.json}{All twelve interleaved requests and source check}\\
@@ -135,6 +182,8 @@ Verification & \artifact{scripts/latency.py}{Field and pixel predicates}; \artif
 \end{tabular}
 
 \begin{thebibliography}{9}
+\bibitem{coach} G. Gan, Y. Ding, C. Chen, Y. Ren, Y. Huang, and H. Zhou.
+\href{https://aclanthology.org/2026.acl-long.613/}{Android Coach: Improve Online Agentic Training Efficiency with Single State Multiple Actions}. In \emph{Proceedings of ACL}, 2026.
 \bibitem{snowflock} H. A. Lagar-Cavilla, J. A. Whitney, A. Scannell, P. Patchin, S. M. Rumble, E. de Lara, M. Brudno, and M. Satyanarayanan.
 \href{https://www.scs.stanford.edu/~rumble/papers/LagarCavillaEurosys09.pdf}{SnowFlock: Rapid Virtual Machine Cloning for Cloud Computing}. In \emph{Proceedings of EuroSys}, 2009.
 \bibitem{reap} D. Ustiugov, P. Petrov, M. Kogias, E. Bugnion, and B. Grot.

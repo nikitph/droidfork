@@ -1,6 +1,8 @@
 # DroidFork
 
-**A fresh Android checkpoint fork through a verified tap in 1.145 s on an M1 Pro.** Six of six native touchscreen requests passed with a median of **1.233 s**. The clock includes creating private disks and a process, restoring the saved Android guest, tapping Phone in Contacts, and verifying the live accessibility tree and rendered pixels. The host reused ordinary file caches.
+DroidFork investigates the environment cost of online reinforcement learning for Android agents. Each rollout needs a working device, a sequence of actions and observations, and a checked task outcome. When several trajectories share a prefix, the environment can either replay those interactions or save the state once and fork new continuations.
+
+In our initial two-trajectory Contacts workload, cold replay took **47.74 s** per batch at the median, warm replay **24.39 s**, and the first on-demand fork implementation **40.96 s**. Warm replay was the strongest baseline. We then isolated one expensive operation: restoring a fresh child from a saved state through its first verified tap. Six repeat touchscreen requests on the modified emulator passed in a **1.233 s median**, with a **1.145 s minimum**. The complete batch timings and the single-action timings cover different work. The experiments used scripted actions on an M1 Pro and did not train a policy.
 
 [Project page](https://nikitph.github.io/droidfork/) · [72-second explainer](https://nikitph.github.io/droidfork/droidfork.mp4?v=2) · [Paper (PDF)](docs/droidfork.pdf) · [LaTeX source](paper/droidfork.tex) · [Raw touchscreen trials](results/fresh-profile/host-fixed-adb.json) · [Build the modified emulator](experiments/fresh-restore/README.md)
 
