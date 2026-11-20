@@ -2,7 +2,7 @@
 
 **A fresh Android checkpoint fork through a verified tap in 1.145 s on an M1 Pro.** Six of six native touchscreen requests passed with a median of **1.233 s**. The clock includes creating private disks and a process, restoring the saved Android guest, tapping Phone in Contacts, and verifying the live accessibility tree and rendered pixels. The host reused ordinary file caches.
 
-[Project page](https://nikitph.github.io/droidfork/) · [19-second film](https://nikitph.github.io/droidfork/droidfork.mp4) · [Paper (PDF)](docs/droidfork.pdf) · [LaTeX source](paper/droidfork.tex) · [Raw touchscreen trials](results/fresh-profile/host-fixed-adb.json) · [Build the modified emulator](experiments/fresh-restore/README.md)
+[Project page](https://nikitph.github.io/droidfork/) · [72-second explainer](https://nikitph.github.io/droidfork/droidfork.mp4?v=2) · [Paper (PDF)](docs/droidfork.pdf) · [LaTeX source](paper/droidfork.tex) · [Raw touchscreen trials](results/fresh-profile/host-fixed-adb.json) · [Build the modified emulator](experiments/fresh-restore/README.md)
 
 The headline result uses the **experimental modified emulator**. The trainer demo below uses the stock SDK and has its own timing results.
 
